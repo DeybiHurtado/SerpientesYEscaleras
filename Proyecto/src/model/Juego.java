@@ -22,29 +22,68 @@ public class Juego {
     }
 
     public String jugarTurno() {
-        if (juegoTerminado) return "El juego ya terminó.";
+        if (juegoTerminado) {
+            return "El juego ya terminó.";
+        }
 
         Jugador jugadorActual = jugadoresActuales.get(indiceTurnoActual);
-        int tirada = dado.lanzarDado()+dado.lanzarDado();
-        int nuevaPosicion = jugadorActual.getPosicion() + tirada;
-
         StringBuilder mensaje = new StringBuilder();
+
+        if (jugadorActual.isPierdeTurno()) {
+            mensaje.append("Turno de ").append(jugadorActual.getNombre())
+                   .append(": Pierde este turno por efecto anterior.");
+            jugadorActual.setPierdeTurno(false);
+            indiceTurnoActual = (indiceTurnoActual + 1) % jugadoresActuales.size();
+            return mensaje.toString();
+        }
+
         mensaje.append("Turno de ").append(jugadorActual.getNombre())
-               .append(" (Casilla ").append(jugadorActual.getPosicion())
-               .append(") - Salió en el dado: ").append(tirada);
+               .append(" (Casilla actual: ").append(jugadorActual.getPosicion()).append("). ");
+
+        int tiro = dado.lanzarDado()+dado.lanzarDado();
+        int avanceReal = tiro;
+
+        if (jugadorActual.getNivelVeneno() == 1) {
+            avanceReal = tiro / 2;
+            mensaje.append("¡Estás envenenado (Nivel 1)! Avanzas la mitad (").append(avanceReal).append("). ");
+            jugadorActual.setNivelVeneno(2);
+        } else if (jugadorActual.getNivelVeneno() == 2) {
+            avanceReal = (int) Math.ceil(tiro * 3.0 / 4.0);
+            mensaje.append("¡El veneno continúa (Nivel 2)! Avanzas 3/4 (").append(avanceReal).append("). ");
+            jugadorActual.setNivelVeneno(0);
+        } else {
+            mensaje.append("Salió en el dado: ").append(tiro).append(". ");
+        }
+
+        int nuevaPosicion = jugadorActual.getPosicion() + avanceReal;
 
         if (nuevaPosicion >= tablero.getCasillaFinal()) {
             jugadorActual.setPosicion(tablero.getCasillaFinal());
             juegoTerminado = true;
             ganador = jugadorActual;
-            mensaje.append("\n¡").append(jugadorActual.getNombre()).append(" ha llegado a 100 y ha ganado el juego!");
+            mensaje.append("¡").append(jugadorActual.getNombre()).append(" ha llegado a 100 y ha ganado el juego!");
         } else {
-            int posicionConEfecto = tablero.evaluarCasilla(nuevaPosicion);
-            jugadorActual.setPosicion(posicionConEfecto);
-            mensaje.append("\nPosición final tras el movimiento: ").append(posicionConEfecto);
+            jugadorActual.setPosicion(nuevaPosicion);
+            String mensajeCasilla = tablero.evaluarCasillaConPoderes(nuevaPosicion, jugadorActual, dado);
+            if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
+                mensaje.append(" ").append(mensajeCasilla);
+            }
+
+            if (jugadorActual.getPosicion() >= tablero.getCasillaFinal()) {
+                jugadorActual.setPosicion(tablero.getCasillaFinal());
+                juegoTerminado = true;
+                ganador = jugadorActual;
+                mensaje.append(" ¡").append(jugadorActual.getNombre()).append(" llegó a la meta y ha ganado!");
+            }
         }
 
-        indiceTurnoActual = (indiceTurnoActual + 1) % jugadoresActuales.size();
+        if (jugadorActual.isTieneTurnoExtra()) {
+            jugadorActual.setTieneTurnoExtra(false);
+            mensaje.append(" ¡Obtienes un turno extra!");
+        } else {
+            indiceTurnoActual = (indiceTurnoActual + 1) % jugadoresActuales.size();
+        }
+
         return mensaje.toString();
     }
 

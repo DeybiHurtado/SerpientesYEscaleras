@@ -26,24 +26,20 @@ public class Tablero {
         serpientes.add(new Serpiente(98, 79, (int) (Math.random() * 4) + 1));
     }
 
-    public int evaluarCasilla(int posicionActual) {
-        // Verificar si cayó en una escalera
+    public String evaluarCasillaConPoderes(int posicionActual, Jugador jugador, Dado dado) {
         for (Escalera escalera : escaleras) {
             if (escalera.getBase() == posicionActual) {
-                System.out.println("¡Has subido por una escalera!");
-                return escalera.getCima();
+                return escalera.getPoder(jugador, dado);
             }
         }
         
-        // Verificar si cayó en una serpiente
         for (Serpiente serpiente : serpientes) {
             if (serpiente.getCabeza() == posicionActual) {
-                System.out.println("¡Oh no! Una serpiente te ha mordido.");
-                return serpiente.getCola();
+                return serpiente.getPoder(jugador, dado);
             }
         }
         
-        return posicionActual; // Si no hay nada, se queda en la misma
+        return "";
     }
 
     public int getCasillaFinal() {

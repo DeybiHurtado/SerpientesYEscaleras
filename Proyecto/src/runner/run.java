@@ -1,10 +1,10 @@
 package runner;
 
-import windowView.View;
+import controller.Control;
 
 public class Run {
     public static void main(String[] args) {
-        View vista = new View();
-        vista.iniciarJuego();
+        Control control = new Control();
+        control.iniciarJuego();
     }
 }

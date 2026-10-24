@@ -70,4 +70,8 @@ public class Jugador {
     public void setTieneTurnoExtra(boolean tieneTurnoExtra) {
         this.tieneTurnoExtra = tieneTurnoExtra;
     }
+      @Override 
+    public String toString(){
+        return "\nNombre "+nombre+"\nCodigo "+id+"\nPosicion "+posicion+"\nPuntaje "+puntaje+"\n__________________";
+    }
 }

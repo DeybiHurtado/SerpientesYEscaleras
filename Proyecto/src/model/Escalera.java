@@ -12,14 +12,14 @@ public class Escalera {
         this.poder = poder;
     }
 
-    public String getPoder(Jugador jugador, Dado dado) {
+    public String getPoder(Jugador jugador, Dados dados) {
         switch (poder) {
             case 1:
                 return unTurno(jugador);
             case 2:
                 return dobleTurno(jugador);
             case 3:
-                return dobleONada(jugador, dado);
+                return dobleONada(jugador, dados);
             default:
                 return predeterminado(jugador);
         }
@@ -46,8 +46,8 @@ public class Escalera {
         return "¡Escalera de Doble Turno! Subes a la cima (" + cima + ") y obtienes un turno extra para tirar de inmediato.";
     }
 
-    public String dobleONada(Jugador jugador, Dado dado) {
-        int tiro = dado.lanzarDado();
+    public String dobleONada(Jugador jugador, Dados dados) {
+        int tiro = dados.lanzarDado();
         StringBuilder sb = new StringBuilder();
         sb.append("¡Escalera Doble o Nada! Debes tirar el dado. Salió: ").append(tiro).append(". ");
 

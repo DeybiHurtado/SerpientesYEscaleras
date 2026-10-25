@@ -9,13 +9,13 @@ public class Dados {
     private int resultadoDado2;
 
     public Dados(){
-        this.dado1 = dado1;
-        this.dado2 = dado2;
+        this.dado1 = new Dado();
+        this.dado2 = new Dado();
     }
 
     public int lanzarDado(){
-        this.resultadoDado1 = resultadoDado1;
-        this.resultadoDado2 = resultadoDado2;
+        this.resultadoDado1 = dado1.lanzarDado();
+        this.resultadoDado2 = dado2.lanzarDado();
 
         return resultadoDado1 + resultadoDado2;
     }

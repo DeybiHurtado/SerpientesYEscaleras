@@ -26,16 +26,16 @@ public class Tablero {
         serpientes.add(new Serpiente(98, 79, (int) (Math.random() * 4) + 1));
     }
 
-    public String evaluarCasillaConPoderes(int posicionActual, Jugador jugador, Dado dado) {
+    public String evaluarCasillaConPoderes(int posicionActual, Jugador jugador, Dados dados) {
         for (Escalera escalera : escaleras) {
             if (escalera.getBase() == posicionActual) {
-                return escalera.getPoder(jugador, dado);
+                return escalera.getPoder(jugador, dados);
             }
         }
         
         for (Serpiente serpiente : serpientes) {
             if (serpiente.getCabeza() == posicionActual) {
-                return serpiente.getPoder(jugador, dado);
+                return serpiente.getPoder(jugador, dados);
             }
         }
         
@@ -44,5 +44,13 @@ public class Tablero {
 
     public int getCasillaFinal() {
         return casillaFinal;
+    }
+
+    public List<Serpiente> getSerpientes(){
+        return serpientes;
+    }
+
+    public List<Escalera> getEscaleras(){
+        return escaleras;
     }
 }

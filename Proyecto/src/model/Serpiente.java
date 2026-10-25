@@ -11,14 +11,14 @@ public class Serpiente {
         this.poder = poder;
     }
 
-    public String getPoder(Jugador jugador, Dado dado) {
+    public String getPoder(Jugador jugador, Dados dados) {
         switch (poder) {
             case 1:
                 return quitaTurno(jugador);
             case 2:
                 return veneno(jugador);
             case 3:
-                return dobleONada(jugador, dado);
+                return dobleONada(jugador, dados);
             default:
                 return predeterminado(jugador);
         }
@@ -41,8 +41,8 @@ public class Serpiente {
         return "¡Serpiente Venenosa! Te bajan a la casilla " + cola + " y tus dados han quedado envenenados por los próximos 2 turnos.";
     }
 
-    public String dobleONada(Jugador jugador, Dado dado) {
-        int tiro = dado.lanzarDado();
+    public String dobleONada(Jugador jugador, Dados dados) {
+        int tiro = dados.lanzarDado();
         StringBuilder sb = new StringBuilder();
         sb.append("¡Serpiente Doble o Nada! Debes tirar el dado de nuevo. Salió: ").append(tiro).append(". ");
 

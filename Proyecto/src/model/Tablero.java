@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import repository.EscalerasRepository;
+import repository.SerpientesRepository;
 
 public class Tablero {
     private List<Serpiente> serpientes;
@@ -9,10 +11,21 @@ public class Tablero {
     private final int casillaFinal = 100;
 
     public Tablero() {
-        this.serpientes = new ArrayList<>();
-        this.escaleras = new ArrayList<>();
+    SerpientesRepository serpientesRepo = new SerpientesRepository();
+    EscalerasRepository escalerasRepo = new EscalerasRepository();
+
+    this.serpientes = new ArrayList<>();
+    this.escaleras = new ArrayList<>();
+
+    if (serpientesRepo.hayDatos() && escalerasRepo.hayDatos()) {
+        this.serpientes.addAll(serpientesRepo.getSerpientes());
+        this.escaleras.addAll(escalerasRepo.getEscaleras());
+    } else {
         inicializarTablero();
+        serpientesRepo.guardarSerpientes(this.serpientes);
+        escalerasRepo.guardarEscaleras(this.escaleras);
     }
+}
 
     private void inicializarTablero() {
         escaleras.add(new Escalera(4, 14, (int) (Math.random() * 4) + 1));

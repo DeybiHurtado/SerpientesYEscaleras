@@ -69,7 +69,7 @@ public class Juego {
         mensaje.append("Turno de ").append(jugadorActual.getNombre())
                .append(" (Casilla actual: ").append(jugadorActual.getPosicion()).append("). ");
 
-        int tiro = dado.lanzarDado()+dado.lanzarDado();
+        int tiro = dados.lanzarDado();
         int avanceReal = tiro;
 
         if (jugadorActual.getNivelVeneno() == 1) {
@@ -93,7 +93,7 @@ public class Juego {
             mensaje.append("¡").append(jugadorActual.getNombre()).append(" ha llegado a 100 y ha ganado el juego!");
         } else {
             jugadorActual.setPosicion(nuevaPosicion);
-            String mensajeCasilla = tablero.evaluarCasillaConPoderes(nuevaPosicion, jugadorActual, dado);
+            String mensajeCasilla = tablero.evaluarCasillaConPoderes(nuevaPosicion, jugadorActual, dados);
             if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
                 mensaje.append(" ").append(mensajeCasilla);
             }

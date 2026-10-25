@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Juego {
     private ArrayList<Jugador> jugadoresActuales;
     private Tablero tablero;
-    private Dado dado;
+    private Dados dados;
     private int indiceTurnoActual;
     private boolean juegoTerminado;
     private Jugador ganador;
@@ -16,7 +16,7 @@ public class Juego {
             this.jugadoresActuales.add(new Jugador(nombre));
         }
         this.tablero = new Tablero();
-        this.dado = new Dado();
+        this.dados = new Dados();
         this.indiceTurnoActual = 0;
         this.juegoTerminado = false;
     }
@@ -40,7 +40,7 @@ public class Juego {
         mensaje.append("Turno de ").append(jugadorActual.getNombre())
                .append(" (Casilla actual: ").append(jugadorActual.getPosicion()).append("). ");
 
-        int tiro = dado.lanzarDado()+dado.lanzarDado();
+        int tiro = dados.lanzarDado();
         int avanceReal = tiro;
 
         if (jugadorActual.getNivelVeneno() == 1) {
@@ -64,7 +64,7 @@ public class Juego {
             mensaje.append("¡").append(jugadorActual.getNombre()).append(" ha llegado a 100 y ha ganado el juego!");
         } else {
             jugadorActual.setPosicion(nuevaPosicion);
-            String mensajeCasilla = tablero.evaluarCasillaConPoderes(nuevaPosicion, jugadorActual, dado);
+            String mensajeCasilla = tablero.evaluarCasillaConPoderes(nuevaPosicion, jugadorActual, dados);
             if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
                 mensaje.append(" ").append(mensajeCasilla);
             }

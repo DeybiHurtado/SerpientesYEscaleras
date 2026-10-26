@@ -3,7 +3,15 @@
     "java.project.sourcePaths": ["Proyecto/src"],
     "java.project.outputPath": "Proyecto/bin",
     "java.project.referencedLibraries": [
+<<<<<<< HEAD
         "Proyecto/lib/**/*.jar"
+=======
+        "c:\\Users\\ACER\\Desktop\\trabajos\\Serpientes\\SerpientesYEscaleras\\Proyecto\\lib\\gson-2.10.1.jar",
+        "Proyecto/lib/gson-2.10.1.jar"
+    ],
+    "java.project.sourcePaths": [
+        "Proyecto\\src"
+>>>>>>> 85cda50ce0b6ec06fc37969a61e6c28fbe1a09a4
     ]
 
 }

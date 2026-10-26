@@ -19,26 +19,44 @@ public class JsonRepository<T> {
     }
     
     public void writeFile(T data){
-        try(FileWriter writer = new FileWriter(filePath)){
-            gson.toJson(data, writer);
+        try {
+            File file = new File(filePath);
+            File carpeta = file.getParentFile();
+            if (carpeta != null && !carpeta.exists()) {
+                carpeta.mkdirs();
+            }
+            try (FileWriter writer = new FileWriter(file)) {
+                gson.toJson(data, writer);
+            }
         }catch(Exception e){
-            System.out.println("" + e);
+                       System.out.println("No se pudo guardar " + filePath + ": " + e);
+
         }
     }
     
     public T readFile(){
-        try {
-            File file = new File(filePath);
-            System.out.println("" + file);
-        } catch (Exception e) {
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return null;
         }
         
         try(FileReader reader = new FileReader(filePath)){
             return gson.fromJson(reader, type);
         }catch(Exception e){
-            System.out.println("" + e);
+          System.out.println("No se pudo leer " + filePath + ": " + e);
         }
         return null;
+    }
+    
+    public boolean exists() {
+        return new File(filePath).exists();
+    }
+
+    public void deleteFile() {
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
+        }
     }
     
 }

@@ -1,14 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-
 import repository.JugadoresRepository;
 
 public class Juego {
     private ArrayList<Jugador> jugadoresActuales;
     private JugadoresRepository jugadoresGuardados;
     private Tablero tablero;
-    private Dados dado;
+    private Dados dados;
     private int indiceTurnoActual;
     private boolean juegoTerminado;
     private Jugador ganador;
@@ -45,7 +44,7 @@ public class Juego {
     
         }
         this.tablero = new Tablero();
-        this.dado = new Dados();
+        this.dados = new Dados();
         this.indiceTurnoActual = 0;
         this.juegoTerminado = false;
     }

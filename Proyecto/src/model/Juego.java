@@ -2,21 +2,50 @@ package model;
 
 import java.util.ArrayList;
 
+import repository.JugadoresRepository;
+
 public class Juego {
     private ArrayList<Jugador> jugadoresActuales;
+    private JugadoresRepository jugadoresGuardados;
     private Tablero tablero;
-    private Dados dados;
+    private Dados dado;
     private int indiceTurnoActual;
     private boolean juegoTerminado;
     private Jugador ganador;
 
+    public Juego(){
+        this.jugadoresGuardados = new JugadoresRepository();
+        this.jugadoresActuales = new ArrayList<>();
+    }
+
+    public Juego(JugadoresRepository jugadores){
+        this.jugadoresGuardados = jugadores;
+    }
+    
+ public void registerJugador (String jugador){
+  Jugador jugadorNuevo = new Jugador (jugador);
+  this.jugadoresGuardados.guardarJugador(jugadorNuevo);
+ }
+
+ 
+    public JugadoresRepository getJugadoresGuardados() {
+    return jugadoresGuardados;
+}
+
+ public void setJugadoresGuardados(JugadoresRepository jugadoresGuardados) {
+    this.jugadoresGuardados = jugadoresGuardados;
+ }
+
     public Juego(ArrayList<String> nombresJugadores) {
         this.jugadoresActuales = new ArrayList<>();
         for (String nombre : nombresJugadores) {
-            this.jugadoresActuales.add(new Jugador(nombre));
+        //    this.jugadoresActuales.add(new Jugador(nombre));
+             Jugador jugador = new Jugador(nombre);
+        this.jugadoresActuales.add(jugador);
+    
         }
         this.tablero = new Tablero();
-        this.dados = new Dados();
+        this.dado = new Dados();
         this.indiceTurnoActual = 0;
         this.juegoTerminado = false;
     }

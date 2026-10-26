@@ -1,6 +1,7 @@
 package controller;
 
 import model.Juego;
+import repository.JugadoresRepository;
 import windowView.View;
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ public class Control {
 
     public Control() {
         this.view = new View();
+        juego = new Juego();
     }
 
     public void iniciarJuego() {
@@ -17,13 +19,15 @@ public class Control {
 
         int numJugadores = view.pedirNumeroJugadores();
 
+       
         ArrayList<String> nombres = new ArrayList<>();
         for (int i = 1; i <= numJugadores; i++) {
             String nombre = view.pedirNombreJugador(i);
-            nombres.add(nombre);
-        }
+            juego.registerJugador(nombre);
+    nombres.add(nombre);
+}
 
-        juego = new Juego(nombres);
+juego = new Juego(nombres);
 
         view.mostrarInicioJuego();
 
@@ -37,5 +41,7 @@ public class Control {
         if (juego.getGanador() != null) {
             view.mostrarGanador(juego.getGanador().getNombre());
         }
+
+        view.mostrarMensaje(" lista Jugadores:" + juego.getJugadoresGuardados());
     }
 }

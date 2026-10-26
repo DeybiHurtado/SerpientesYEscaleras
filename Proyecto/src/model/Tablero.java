@@ -24,9 +24,15 @@ public class Tablero {
         inicializarTablero();
         serpientesRepo.guardarSerpientes(this.serpientes);
         escalerasRepo.guardarEscaleras(this.escaleras);
+      }
+    
     }
-}
 
+    public Tablero(List<Serpiente> serpientes, List<Escalera> escaleras){
+
+        this.serpientes = new ArrayList<>(serpientes);
+        this.escaleras = new ArrayList<>(escaleras);
+    }
     private void inicializarTablero() {
         escaleras.add(new Escalera(4, 14, (int) (Math.random() * 4) + 1));
         escaleras.add(new Escalera(9, 31, (int) (Math.random() * 4) + 1));

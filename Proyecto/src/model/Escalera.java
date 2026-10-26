@@ -69,4 +69,15 @@ public class Escalera {
     public void setBase(int base) { this.base = base; }
     public int getCima() { return cima; }
     public void setCima(int cima) { this.cima = cima; }
+     public int getNumeroPoder() { return poder; }
+    public boolean isUsada() { return usada; }
+
+    public String getNombrePoder() {
+        switch (poder) {
+            case 1: return "Un solo uso";
+            case 2: return "Doble turno";
+            case 3: return "Doble o nada";
+            default: return "Normal";
+        }
+    }
 }

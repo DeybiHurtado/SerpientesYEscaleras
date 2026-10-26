@@ -1,0 +1,125 @@
+{
+  "ArrayJugadores": [
+    {
+      "id": 1,
+      "nombre": "lucas",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 2,
+      "nombre": "bugbuni",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 3,
+      "nombre": "luna",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 4,
+      "nombre": "pata",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 1,
+      "nombre": "julian",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 2,
+      "nombre": "pan",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 1,
+      "nombre": "mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 2,
+      "nombre": "deybi",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 1,
+      "nombre": "mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 2,
+      "nombre": "panto",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 0,
+      "esConsola": false
+    },
+    {
+      "id": 5,
+      "nombre": "Mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
+    }
+  ]
+}

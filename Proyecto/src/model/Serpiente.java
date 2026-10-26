@@ -64,4 +64,14 @@ public class Serpiente {
     public void setCabeza(int cabeza) { this.cabeza = cabeza; }
     public int getCola() { return cola; }
     public void setCola(int cola) { this.cola = cola; }
+    public int getNumeroPoder() { return poder; }
+
+    public String getNombrePoder() {
+        switch (poder) {
+            case 1: return "Quita turno";
+            case 2: return "Veneno";
+            case 3: return "Doble o nada";
+            default: return "Normal";
+        }
+    }
 }

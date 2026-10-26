@@ -1,0 +1,16 @@
+{
+  "lista": [
+    {
+      "nombre": "pepe",
+      "partidasJugadas": 1,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "carlos",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 56
+    }
+  ]
+}

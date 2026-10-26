@@ -1,0 +1,24 @@
+{
+  "lista": [
+    {
+      "base": 4,
+      "cima": 14,
+      "poder": 4
+    },
+    {
+      "base": 9,
+      "cima": 31,
+      "poder": 2
+    },
+    {
+      "base": 20,
+      "cima": 38,
+      "poder": 2
+    },
+    {
+      "base": 28,
+      "cima": 84,
+      "poder": 1
+    }
+  ]
+}

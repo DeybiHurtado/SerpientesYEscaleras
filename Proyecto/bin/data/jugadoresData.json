@@ -7,13 +7,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 2,
@@ -22,13 +18,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 3,
@@ -37,13 +29,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 4,
@@ -52,13 +40,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 1,
@@ -67,13 +51,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 2,
@@ -82,13 +62,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 1,
@@ -97,13 +73,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 2,
@@ -112,13 +84,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 1,
@@ -127,13 +95,9 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
     },
     {
       "id": 2,
@@ -142,7 +106,6 @@
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
-<<<<<<< HEAD
       "tieneTurnoExtra": false,
       "casillaMaxima": 0,
       "esConsola": false
@@ -157,9 +120,28 @@
       "tieneTurnoExtra": false,
       "casillaMaxima": 1,
       "esConsola": false
-=======
-      "tieneTurnoExtra": false
->>>>>>> 7b995a376b9f56534de6fc2fa9435daa27656226
+    },
+    {
+      "id": 6,
+      "nombre": "pepe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
+    },
+    {
+      "id": 7,
+      "nombre": "carlos",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
     }
   ]
 }

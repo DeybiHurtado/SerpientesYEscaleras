@@ -1,0 +1,24 @@
+{
+  "lista": [
+    {
+      "cabeza": 17,
+      "cola": 7,
+      "poder": 1
+    },
+    {
+      "cabeza": 54,
+      "cola": 34,
+      "poder": 4
+    },
+    {
+      "cabeza": 62,
+      "cola": 19,
+      "poder": 1
+    },
+    {
+      "cabeza": 98,
+      "cola": 79,
+      "poder": 4
+    }
+  ]
+}

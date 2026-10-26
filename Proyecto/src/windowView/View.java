@@ -22,7 +22,6 @@ public class View {
         System.out.println("=== BIENVENIDO A SERPIENTES Y ESCALERAS ===");
     }
 
-    // REEMPLAZAR ESTE MÉTODO:
 public int pedirNumeroJugadores() {
     return leerEntero("Ingrese el número de jugadores (de 2 a 4): ", 2, 4);
 }
@@ -48,11 +47,9 @@ public int pedirNumeroJugadores() {
         System.out.println("--------------------------------------------------");
     }
 
-    // REEMPLAZAR POR ESTE (SE QUITÓ scanner.close()):
 public void mostrarGanador(String nombreGanador) {
     System.out.println("\n¡FIN DEL JUEGO! El ganador es: " + nombreGanador);
 }
-    // ---------- Entrada y validación básica ----------
 
     private int leerEntero(String mensaje, int min, int max) {
         while (true) {
@@ -64,7 +61,6 @@ public void mostrarGanador(String nombreGanador) {
                     return valor;
                 }
             } catch (NumberFormatException e) {
-                // Se ignora para volver a solicitar entrada válida
             }
             System.out.println("Opción no válida. Escribe un número entre " + min + " y " + max + ".");
         }
@@ -84,7 +80,6 @@ public void mostrarGanador(String nombreGanador) {
         return scanner.nextLine().trim();
     }
 
-    // ---------- Menú Principal ----------
 
     public int mostrarMenuPrincipal(boolean hayPartidaGuardada) {
         System.out.println();
@@ -104,7 +99,6 @@ public void mostrarGanador(String nombreGanador) {
         System.out.println("¡Hasta pronto!");
     }
 
-    // ---------- Control de Turno y Guardado ----------
 
     public String pedirAccionTurno(String nombre) {
         while (true) {
@@ -126,7 +120,6 @@ public void mostrarGanador(String nombreGanador) {
         }
     }
 
-    // ---------- Visualización del Tablero ----------
 
     public void mostrarTablero(List<Serpiente> serpientes, List<Escalera> escaleras, int casillaFinal) {
         System.out.println("\n=========== TABLERO ===========");
@@ -171,7 +164,6 @@ public void mostrarGanador(String nombreGanador) {
         return ' ';
     }
 
-    // ---------- Estadísticas e Información ----------
 
     public void mostrarEstadisticas(List<EstadisticaJugador> estadisticas, List<Partida> partidas) {
         System.out.println("\n=========== ESTADÍSTICAS ===========");

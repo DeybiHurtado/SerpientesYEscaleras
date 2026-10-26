@@ -13,7 +13,7 @@ public class Estadisticas {
         return lista;
     }
 
-    // Busca por nombre (sin importar mayúsculas); si no existe, la crea
+   
     public EstadisticaJugador buscarOCrear(String nombre) {
         for (EstadisticaJugador e : lista) {
             if (e.getNombre().equalsIgnoreCase(nombre)) {

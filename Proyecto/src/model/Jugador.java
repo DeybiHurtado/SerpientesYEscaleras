@@ -11,12 +11,31 @@ public class Jugador {
     private boolean pierdeTurno = false;
     private int nivelVeneno = 0;
     private boolean tieneTurnoExtra = false;
+    private int casillaMaxima = 1;
+    private boolean esConsola = false;
 
     public Jugador(String nombre) {
         this.id = contadorId++;
         this.nombre = nombre;
         this.posicion = 1;
         this.puntaje = 0;
+    }
+
+    public Jugador(String nombre, boolean esConsola) {
+        this(nombre);
+        this.esConsola = esConsola;
+    }
+    public static void ajustarContador(int siguienteId) {
+        if (siguienteId > contadorId) {
+            contadorId = siguienteId;
+        }
+    }
+     public boolean isEsConsola() {
+        return esConsola;
+    }
+
+    public int getCasillaMaxima() {
+        return Math.max(casillaMaxima, posicion);
     }
 
     public int getId() {
@@ -36,7 +55,10 @@ public class Jugador {
     }
 
     public void setPosicion(int posicion) {
-        this.posicion = posicion;
+         this.posicion = posicion;
+        if (posicion > casillaMaxima) {
+            casillaMaxima = posicion;
+        }
     }
 
     public int getPuntaje() {

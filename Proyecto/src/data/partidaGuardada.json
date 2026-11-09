@@ -1,0 +1,73 @@
+{
+  "fechaGuardado": "2026-10-26 00:03",
+  "jugadores": [
+    {
+      "id": 6,
+      "nombre": "maria",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
+    },
+    {
+      "id": 7,
+      "nombre": "Consola",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": true
+    }
+  ],
+  "serpientes": [
+    {
+      "cabeza": 17,
+      "cola": 7,
+      "poder": 1
+    },
+    {
+      "cabeza": 54,
+      "cola": 34,
+      "poder": 3
+    },
+    {
+      "cabeza": 62,
+      "cola": 19,
+      "poder": 1
+    },
+    {
+      "cabeza": 98,
+      "cola": 79,
+      "poder": 4
+    }
+  ],
+  "escaleras": [
+    {
+      "base": 4,
+      "cima": 14,
+      "poder": 1
+    },
+    {
+      "base": 9,
+      "cima": 31,
+      "poder": 3
+    },
+    {
+      "base": 20,
+      "cima": 38,
+      "poder": 3
+    },
+    {
+      "base": 28,
+      "cima": 84,
+      "poder": 4
+    }
+  ],
+  "indiceTurnoActual": 0,
+  "turnos": 0
+}

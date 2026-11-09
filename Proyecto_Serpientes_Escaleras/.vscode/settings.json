@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "SerpientesYEscaleras\\Proyecto\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "SerpientesYEscaleras\\Proyecto\\lib\\gson-2.10.1.jar"
+    ]
+}

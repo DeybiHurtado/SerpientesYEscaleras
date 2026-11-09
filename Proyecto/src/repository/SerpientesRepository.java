@@ -7,16 +7,15 @@ import java.util.List;
 import model.Serpiente;
 import model.Serpientes;
 import persistance.JsonRepository;
+import persistance.Rutas;
 
 public class SerpientesRepository {
-    private static final String RUTA = "src/data/serpientesData.json";
-
     private JsonRepository<Serpientes> repository;
     private Serpientes misSerpientes;
 
     public SerpientesRepository() {
-        this.repository = new JsonRepository<>(RUTA, Serpientes.class);
-        if (new File(RUTA).exists()) {
+        this.repository = new JsonRepository<>(Rutas.data("Serpientes.json"), Serpientes.class);
+        if (new File(Rutas.data("Serpientes.json")).exists()) {
             this.misSerpientes = repository.readFile();
         }
         if (this.misSerpientes == null) {

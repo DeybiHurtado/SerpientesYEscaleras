@@ -7,16 +7,16 @@ import java.util.List;
 import model.Escalera;
 import model.Escaleras;
 import persistance.JsonRepository;
+import persistance.Rutas;
 
 public class EscalerasRepository {
-    private static final String RUTA = "src/data/escalerasData.json";
 
     private JsonRepository<Escaleras> repository;
     private Escaleras misEscaleras;
 
     public EscalerasRepository() {
-        this.repository = new JsonRepository<>(RUTA, Escaleras.class);
-        if (new File(RUTA).exists()) {
+        this.repository = new JsonRepository<>(Rutas.data("Escaleras.json"), Escaleras.class);
+        if (new File(Rutas.data("Escaleras.json")).exists()) {
             this.misEscaleras = repository.readFile();
         }
         if (this.misEscaleras == null) {

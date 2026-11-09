@@ -123,7 +123,22 @@
     },
     {
       "id": 6,
+<<<<<<< HEAD
       "nombre": "maria",
+=======
+      "nombre": "pepe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
+    },
+    {
+      "id": 7,
+      "nombre": "carlos",
+>>>>>>> 5f5fc83796ddf60049bcd1f36fee8d61f6d287c8
       "posicion": 1,
       "puntaje": 0,
       "pierdeTurno": false,

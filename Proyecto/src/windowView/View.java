@@ -22,7 +22,6 @@ public class View {
         System.out.println("=== BIENVENIDO A SERPIENTES Y ESCALERAS ===");
     }
 
-    // REEMPLAZAR ESTE MÉTODO:
 public int pedirNumeroJugadores() {
     return leerEntero("Ingrese el número de jugadores (de 2 a 4): ", 2, 4);
 }
@@ -51,7 +50,6 @@ public int pedirNumeroJugadores() {
         System.out.println("--------------------------------------------------");
     }
 
-    // REEMPLAZAR POR ESTE (SE QUITÓ scanner.close()):
 public void mostrarGanador(String nombreGanador) {
     System.out.println("\n¡FIN DEL JUEGO! El ganador es: " + nombreGanador);
 }
@@ -67,7 +65,7 @@ public void mostrarGanador(String nombreGanador) {
                     return valor;
                 }
             } catch (NumberFormatException e) {
-               
+
             }
             System.out.println("Opción no válida. Escribe un número entre " + min + " y " + max + ".");
         }
@@ -86,7 +84,6 @@ public void mostrarGanador(String nombreGanador) {
         System.out.print("Ingrese tu nombre: ");
         return scanner.nextLine().trim();
     }
-
 
 
     public int mostrarMenuPrincipal(boolean hayPartidaGuardada) {
@@ -171,6 +168,9 @@ public void mostrarGanador(String nombreGanador) {
         }
         return ' ';
     }
+
+
+
 
     public void mostrarEstadisticas(List<EstadisticaJugador> estadisticas, List<Partida> partidas) {
         System.out.println("\n=========== ESTADÍSTICAS ===========");

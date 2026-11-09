@@ -1,0 +1,14 @@
+{
+  "lista": [
+    {
+      "fecha": "2026-10-26 10:14",
+      "participantes": [
+        "pepe",
+        "carlos"
+      ],
+      "ganador": "pepe",
+      "turnos": 10,
+      "contraConsola": false
+    }
+  ]
+}

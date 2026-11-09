@@ -1,0 +1,85 @@
+{
+  "lista": [
+    {
+      "fecha": "2026-11-08 09:05",
+      "participantes": [
+        "carmen",
+        "mario"
+      ],
+      "ganador": "mario",
+      "turnos": 18,
+      "contraConsola": false
+    },
+    {
+      "fecha": "2026-11-08 09:06",
+      "participantes": [
+        "mario",
+        "Consola"
+      ],
+      "ganador": "mario",
+      "turnos": 13,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-08 09:23",
+      "participantes": [
+        "mario",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 18,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-08 15:12",
+      "participantes": [
+        "carlos",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 28,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-08 15:13",
+      "participantes": [
+        "carlos",
+        "mario",
+        "luisa"
+      ],
+      "ganador": "carlos",
+      "turnos": 31,
+      "contraConsola": false
+    },
+    {
+      "fecha": "2026-11-08 15:16",
+      "participantes": [
+        "carlos",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 36,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-08 15:31",
+      "participantes": [
+        "Mario",
+        "Consola"
+      ],
+      "ganador": "Mario",
+      "turnos": 27,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-08 18:25",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "esteban",
+      "turnos": 24,
+      "contraConsola": true
+    }
+  ]
+}

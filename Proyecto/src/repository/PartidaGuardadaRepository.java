@@ -4,9 +4,7 @@ import model.PartidaGuardada;
 import persistance.JsonRepository;
 import persistance.Rutas;
 
-/**
- * Guarda solo la última partida que el usuario decidió guardar.
- */
+
 public class PartidaGuardadaRepository {
     private JsonRepository<PartidaGuardada> repository;
 

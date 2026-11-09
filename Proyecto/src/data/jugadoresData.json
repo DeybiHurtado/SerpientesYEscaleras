@@ -146,6 +146,28 @@
       "tieneTurnoExtra": false,
       "casillaMaxima": 1,
       "esConsola": false
+    },
+    {
+      "id": 8,
+      "nombre": "trwe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
+    },
+    {
+      "id": 9,
+      "nombre": "WEGE",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
     }
   ]
 }

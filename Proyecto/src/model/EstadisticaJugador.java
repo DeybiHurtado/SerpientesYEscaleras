@@ -21,6 +21,17 @@ public class EstadisticaJugador {
         if (casillaAlcanzada > this.casillaMasAlta) {
             this.casillaMasAlta = casillaAlcanzada;
         }
+
+    }
+
+    public double porcentajeVictoria(){
+        if(partidasGanadas == 0){
+            return 0;
+        }
+
+        double porcentaje = ((double) this.partidasGanadas / this.partidasJugadas) * 100;
+
+        return porcentaje;
     }
 
     public String getNombre() { return nombre; }

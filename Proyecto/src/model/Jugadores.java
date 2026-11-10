@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Jugadores {
-      private Jugador jugador;
+    private Jugador jugador;
      private ArrayList<Jugador> ArrayJugadores;
 
      public Jugadores(){

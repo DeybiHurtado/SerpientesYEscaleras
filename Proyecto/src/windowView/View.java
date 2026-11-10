@@ -1,3 +1,4 @@
+/* 
 package windowView;
 
 
@@ -211,3 +212,4 @@ public void mostrarGanador(String nombreGanador) {
         System.out.println("\nDurante la partida puedes escribir G para guardarla y M para volver al menú.");
     }
 }
+    */

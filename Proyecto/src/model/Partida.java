@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 public class Partida {
     private String fecha;
-    private ArrayList<String> participantes;
+    private Jugadores participantes;
+    private Jugador currentJugador;
     private String ganador;
     private int turnos;
     private boolean contraConsola;
 
-    public Partida(String fecha, ArrayList<String> participantes, String ganador, int turnos, boolean contraConsola){
+    public Partida(String fecha, Jugadores participantes, String ganador, int turnos, boolean contraConsola){
 
         this.fecha = fecha;
         this.participantes = participantes;
@@ -22,7 +23,7 @@ public class Partida {
         return fecha;
     }
 
-    public ArrayList<String> getParticipantes(){
+    public Jugadores getParticipantes(){
         return participantes;
     }
 

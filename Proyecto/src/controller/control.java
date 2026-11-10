@@ -8,11 +8,11 @@ import model.PartidaGuardada;
 import model.Tablero;
 import java.util.ArrayList;
 
-public class Control {
+public class control {
     private View view;
     private Juego juego;
 
-    public Control() {
+    public control() {
         this.view = new View();
         juego = new Juego();
     }
@@ -38,6 +38,7 @@ public class Control {
                     break;
                 case 5:
                     view.mostrarEstadisticas(juego.getEstadisticas(), juego.getPartidas());
+                    view.esperarEnter();
                     break;
                 case 6:
                     view.mostrarInfo();

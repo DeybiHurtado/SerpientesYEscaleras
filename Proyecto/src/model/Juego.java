@@ -158,7 +158,6 @@ public Jugador getJugadorActual() {
         partidasRepo.guardarPartida(new Partida(fecha, participantes, ganador.getNombre(), turnos, isContraConsola()));
         estadisticasRepo.registrarPartida(jugadoresActuales, ganador.getNombre());
 
-        // Si era la partida guardada y ya terminó, no tiene sentido seguir guardándola
         if (vieneDeGuardada) {
             partidaGuardadaRepo.borrar();
             vieneDeGuardada = false;

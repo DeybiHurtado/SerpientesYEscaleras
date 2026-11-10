@@ -1,0 +1,40 @@
+{
+  "lista": [
+    {
+      "nombre": "carmen",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 62
+    },
+    {
+      "nombre": "mario",
+      "partidasJugadas": 5,
+      "partidasGanadas": 3,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "Consola",
+      "partidasJugadas": 6,
+      "partidasGanadas": 3,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "carlos",
+      "partidasJugadas": 3,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "luisa",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 66
+    },
+    {
+      "nombre": "esteban",
+      "partidasJugadas": 1,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
+    }
+  ]
+}

@@ -22,7 +22,6 @@ public class View {
         System.out.println("=== BIENVENIDO A SERPIENTES Y ESCALERAS ===");
     }
 
-    // REEMPLAZAR ESTE MÉTODO:
 public int pedirNumeroJugadores() {
     return leerEntero("Ingrese el número de jugadores (de 2 a 4): ", 2, 4);
 }
@@ -37,7 +36,10 @@ public int pedirNumeroJugadores() {
     }
 
     public void esperarEnter() {
-        scanner.nextLine();
+        if(scanner.hasNextLine()){
+            scanner.nextLine();
+        }
+      
     }
 
     public void mostrarMensaje(String mensaje) {
@@ -48,11 +50,10 @@ public int pedirNumeroJugadores() {
         System.out.println("--------------------------------------------------");
     }
 
-    // REEMPLAZAR POR ESTE (SE QUITÓ scanner.close()):
 public void mostrarGanador(String nombreGanador) {
     System.out.println("\n¡FIN DEL JUEGO! El ganador es: " + nombreGanador);
 }
-    // ---------- Entrada y validación básica ----------
+
 
     private int leerEntero(String mensaje, int min, int max) {
         while (true) {
@@ -64,7 +65,7 @@ public void mostrarGanador(String nombreGanador) {
                     return valor;
                 }
             } catch (NumberFormatException e) {
-                // Se ignora para volver a solicitar entrada válida
+
             }
             System.out.println("Opción no válida. Escribe un número entre " + min + " y " + max + ".");
         }
@@ -84,7 +85,6 @@ public void mostrarGanador(String nombreGanador) {
         return scanner.nextLine().trim();
     }
 
-    // ---------- Menú Principal ----------
 
     public int mostrarMenuPrincipal(boolean hayPartidaGuardada) {
         System.out.println();
@@ -104,7 +104,6 @@ public void mostrarGanador(String nombreGanador) {
         System.out.println("¡Hasta pronto!");
     }
 
-    // ---------- Control de Turno y Guardado ----------
 
     public String pedirAccionTurno(String nombre) {
         while (true) {
@@ -126,7 +125,6 @@ public void mostrarGanador(String nombreGanador) {
         }
     }
 
-    // ---------- Visualización del Tablero ----------
 
     public void mostrarTablero(List<Serpiente> serpientes, List<Escalera> escaleras, int casillaFinal) {
         System.out.println("\n=========== TABLERO ===========");
@@ -171,7 +169,8 @@ public void mostrarGanador(String nombreGanador) {
         return ' ';
     }
 
-    // ---------- Estadísticas e Información ----------
+
+
 
     public void mostrarEstadisticas(List<EstadisticaJugador> estadisticas, List<Partida> partidas) {
         System.out.println("\n=========== ESTADÍSTICAS ===========");
@@ -179,10 +178,10 @@ public void mostrarGanador(String nombreGanador) {
             System.out.println("Todavía no hay partidas terminadas.");
             return;
         }
-        System.out.println(String.format("%-15s %8s %8s %14s", "Jugador", "Jugadas", "Ganadas", "Casilla máx."));
+        System.out.println(String.format("%-15s %8s %8s %10s %14s", "Jugador", "Jugadas", "Ganadas", "Porcentaje", "Casilla máx."));
         for (EstadisticaJugador e : estadisticas) {
-            System.out.println(String.format("%-15s %8d %8d %14d",
-                    e.getNombre(), e.getPartidasJugadas(), e.getPartidasGanadas(), e.getCasillaMasAlta()));
+            System.out.println(String.format("%-15s %8d %8d %9.1f%% %14d",
+                    e.getNombre(), e.getPartidasJugadas(), e.getPartidasGanadas(), e.porcentajeVictoria(),e.getCasillaMasAlta()));
         }
 
         System.out.println("\nÚltimas partidas (máximo 10):");

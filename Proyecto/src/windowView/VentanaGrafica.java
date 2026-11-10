@@ -23,7 +23,7 @@ public class VentanaGrafica extends JFrame {
 
     private final PantallaTablero pantallaTablero;
     private final PantallaCarga pantallaCarga;
-    private final PantallaGanador pantallaGanador;
+
 
     private String pantallaActual = "inicio";
     private boolean guardadoAutomatico = false;
@@ -34,12 +34,12 @@ public class VentanaGrafica extends JFrame {
 
         this.pantallaTablero = new PantallaTablero(this);
         this.pantallaCarga = new PantallaCarga(this);
-        this.pantallaGanador = new PantallaGanador(this);
+     
         
         this.panelPrincipal.add(new PantallaInicio(this), "inicio");
         this.panelPrincipal.add(this.pantallaCarga, "carga");
         this.panelPrincipal.add(this.pantallaTablero, "tablero");
-        this.panelPrincipal.add(this.pantallaGanador, "ganador");
+    
 
         this.ventanasEmergentes.put("modo", new PantallaModo(this));
         this.ventanasEmergentes.put("individual", new PantallaIndividual(this));
@@ -48,6 +48,7 @@ public class VentanaGrafica extends JFrame {
         this.ventanasEmergentes.put("reglas", new PantallaReglas(this));
         this.ventanasEmergentes.put("salir", new PantallaSalir(this));
         this.ventanasEmergentes.put("guardar", new PantallaGuardar(this));
+        this.ventanasEmergentes.put("ganador", new PantallaGanador(this));
 
         this.setContentPane(this.panelPrincipal);
         this.setGlassPane(this.superposicion); 
@@ -116,8 +117,7 @@ public class VentanaGrafica extends JFrame {
 
     public void mostrarGanador(String nombre) {
         this.pantallaTablero.detenerPartida();
-        this.pantallaGanador.setNombreGanador(nombre.toUpperCase());
-        this.mostrar("ganador");
+        this.abrirSuperposicion(nombre);
     }
 
     public void volverAlMenu() {

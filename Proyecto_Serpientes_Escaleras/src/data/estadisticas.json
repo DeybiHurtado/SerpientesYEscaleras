@@ -14,8 +14,8 @@
     },
     {
       "nombre": "Consola",
-      "partidasJugadas": 6,
-      "partidasGanadas": 3,
+      "partidasJugadas": 7,
+      "partidasGanadas": 4,
       "casillaMasAlta": 100
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "nombre": "esteban",
-      "partidasJugadas": 1,
+      "partidasJugadas": 2,
       "partidasGanadas": 1,
       "casillaMasAlta": 100
     }

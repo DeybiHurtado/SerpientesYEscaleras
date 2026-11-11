@@ -164,6 +164,17 @@
       "tieneTurnoExtra": false,
       "casillaMaxima": 1,
       "esConsola": false
+    },
+    {
+      "id": 19,
+      "nombre": "esteban",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false
     }
   ]
 }

@@ -80,6 +80,16 @@
       "ganador": "esteban",
       "turnos": 24,
       "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-09 09:27",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 19,
+      "contraConsola": true
     }
   ]
 }

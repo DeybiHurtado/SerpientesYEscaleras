@@ -152,7 +152,6 @@ public abstract class Pantalla extends JPanel {
         g.setFont(fuente);
         FontMetrics medidas = g.getFontMetrics();
 
-       
         List<String> lineas = new ArrayList<>();
         String lineaActual = "";
         for (String palabra : texto.split(" ")) {

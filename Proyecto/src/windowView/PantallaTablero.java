@@ -23,7 +23,7 @@ public class PantallaTablero extends Pantalla {
     private final VentanaGrafica ventana;
     private final Random azar = new Random();
     private final CasillaBoton[][] casillas = new CasillaBoton[10][10]; 
-    private final PantallaJugadores[] paneles = new PantallaJugadores[4];
+    private final PanelJugador[] paneles = new PanelJugador[4];
     private final boolean[] esComputadora = new boolean[4];
     private final VentanaAviso ventanaAviso = new VentanaAviso();
     private final Semaphore semaforoLanzamiento = new Semaphore(0);
@@ -67,7 +67,7 @@ public class PantallaTablero extends Pantalla {
     private void crearPanelesDeJugadores() {
         for (int i = 0; i < 4; i++) {
             final int indice = i;
-            PantallaJugadores panel = new PantallaJugadores(i, "Jugador " + (i + 1));
+            PanelJugador panel = new PanelJugador(i, "Jugador " + (i + 1));
             panel.setAlPulsarDados(() -> this.alPulsarDados(indice));
             this.paneles[i] = panel;
             this.agregar(panel, POSICION_DE_PANELES[i][0], POSICION_DE_PANELES[i][1], panel.getAnchoImagen(),
@@ -118,7 +118,7 @@ public class PantallaTablero extends Pantalla {
     }
 
     private void prepararPanel(int indice, DatosPartida datos) {
-        PantallaJugadores panel = this.paneles[indice];
+        PanelJugador panel = this.paneles[indice];
         this.esComputadora[indice] = datos.esComputadora(indice);
         panel.setNombre(datos.getNombre(indice));
         panel.setPosicion(datos.getPosicion(indice));
@@ -156,7 +156,7 @@ public class PantallaTablero extends Pantalla {
         this.turnoActual = -1;
         this.partidaPausada = false;
         this.ventanaAviso.ocultar();
-        for (PantallaJugadores panel : this.paneles) {
+        for (PanelJugador panel : this.paneles) {
             panel.setEsTurno(false);
             panel.setEsperandoLanzamiento(false);
         }
@@ -186,7 +186,7 @@ public class PantallaTablero extends Pantalla {
     }
 
     private void alPulsarDados(int indice) {
-        PantallaJugadores panel = this.paneles[indice];
+        PanelJugador panel = this.paneles[indice];
         boolean esSuTurno = (indice == this.turnoActual);
         if (esSuTurno && panel.isEsperandoLanzamiento() && !this.esComputadora[indice]) {
             panel.setEsperandoLanzamiento(false);
@@ -195,7 +195,7 @@ public class PantallaTablero extends Pantalla {
     }
 
     boolean jugarTurno(int indice) throws InterruptedException {
-        PantallaJugadores panel = this.paneles[indice];
+        PanelJugador panel = this.paneles[indice];
         this.turnoActual = indice;
         this.marcarPanelDelTurno(indice);
 
@@ -243,7 +243,7 @@ public class PantallaTablero extends Pantalla {
         }
     }
 
-    private void lanzarDados(PantallaJugadores panel) throws InterruptedException {
+    private void lanzarDados(PanelJugador panel) throws InterruptedException {
         for (int cuadro = 0; cuadro < 16; cuadro++) {
             double giro = (this.azar.nextDouble() - 0.5) * 0.6;
             panel.setDados(1 + this.azar.nextInt(6), 1 + this.azar.nextInt(6));
@@ -253,7 +253,7 @@ public class PantallaTablero extends Pantalla {
         panel.setLanzando(false, 0);
     }
 
-    private void moverFicha(PantallaJugadores panel, int casilla, int pasos, int milisegundosPorPaso, int salto)
+    private void moverFicha(PanelJugador panel, int casilla, int pasos, int milisegundosPorPaso, int salto)
             throws InterruptedException {
         double[] centro = Casillas.centro(casilla);
         int indiceColor = panel.getIndiceColor();
@@ -276,7 +276,7 @@ public class PantallaTablero extends Pantalla {
         this.repaint();
     }
 
-    private void revisarEscaleraOSerpiente(PantallaJugadores panel) throws InterruptedException {
+    private void revisarEscaleraOSerpiente(PanelJugador panel) throws InterruptedException {
         int casillaActual = panel.getPosicion();
         int casillaDestino = Casillas.destino(casillaActual);
         if (casillaDestino == casillaActual) {
@@ -298,7 +298,7 @@ public class PantallaTablero extends Pantalla {
         this.dormir(300);
     }
 
-    private void ganar(PantallaJugadores panel) throws InterruptedException {
+    private void ganar(PanelJugador panel) throws InterruptedException {
         this.mostrarAviso(1500, "¡LLEGÓ A LA META!", 40, Recursos.DORADO, panel.getNombre(), 56,
                 panel.getColorDelJugador());
         final String nombreGanador = panel.getNombre();
@@ -349,7 +349,7 @@ public class PantallaTablero extends Pantalla {
         if (turno < 0 || turno >= this.cantidadJugadores) {
             return;
         }
-        PantallaJugadores panel = this.paneles[turno];
+        PanelJugador panel = this.paneles[turno];
         if (panel.isEsperandoLanzamiento()) {
             this.textoCentrado(g, panel.getNombre() + ", haz clic en tus dados para lanzar", 720, 874, 20,
                     Recursos.DORADO, 1000);
@@ -370,7 +370,7 @@ public class PantallaTablero extends Pantalla {
         this.dibujarIndicacionDeLanzamiento(g);
         
         for (int i = 0; i < this.cantidadJugadores; i++) {
-            BufferedImage ficha = Recursos.imagen("jugadores/ficha_" + PantallaJugadores.COLORES[i] + ".png");
+            BufferedImage ficha = Recursos.imagen("jugadores/ficha_" + PanelJugador.COLORES[i] + ".png");
             int x = (int) Math.round(this.paneles[i].getXFicha() - ficha.getWidth() / 2.0);
             int y = (int) Math.round(this.paneles[i].getYFicha() - ficha.getHeight() / 2.0);
             g.drawImage(ficha, x, y, null);

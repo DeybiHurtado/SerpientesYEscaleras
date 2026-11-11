@@ -61,7 +61,7 @@ public class PantallaIndividual extends Pantalla {
     protected void dibujar(Graphics2D g) {
         this.textoCentrado(g, "MODO INDIVIDUAL", 500, 130, 60, Recursos.CREMA, 900);
         Recursos.dibujarEstirada(g, Recursos.imagen("botones/normal.png"), 250, 250, 500, 170, 16, 16);
-        this.textoCentrado(g, "Tu nombre", 500, 300, 40, PantallaJugadores.COLORES_DE_TEXTO[0], 400);
+        this.textoCentrado(g, "Tu nombre", 500, 300, 40, PanelJugador.COLORES_DE_TEXTO[0], 400);
         this.textoCentrado(g, "RIVALES (COMPUTADORA):", 500, 510, 34, Recursos.CREMA, 800);
     }
 }

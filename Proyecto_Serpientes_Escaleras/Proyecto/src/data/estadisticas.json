@@ -1,0 +1,16 @@
+{
+  "lista": [
+    {
+      "nombre": "esteban",
+      "partidasJugadas": 4,
+      "partidasGanadas": 2,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "Consola",
+      "partidasJugadas": 4,
+      "partidasGanadas": 2,
+      "casillaMasAlta": 100
+    }
+  ]
+}

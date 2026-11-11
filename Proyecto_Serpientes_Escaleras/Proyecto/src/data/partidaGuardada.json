@@ -1,0 +1,73 @@
+{
+  "fechaGuardado": "2026-11-09 11:39",
+  "jugadores": [
+    {
+      "id": 2,
+      "nombre": "esteban",
+      "posicion": 26,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 26,
+      "esConsola": false
+    },
+    {
+      "id": 3,
+      "nombre": "Consola",
+      "posicion": 51,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 51,
+      "esConsola": true
+    }
+  ],
+  "serpientes": [
+    {
+      "cabeza": 17,
+      "cola": 7,
+      "poder": 4
+    },
+    {
+      "cabeza": 54,
+      "cola": 34,
+      "poder": 2
+    },
+    {
+      "cabeza": 62,
+      "cola": 19,
+      "poder": 3
+    },
+    {
+      "cabeza": 98,
+      "cola": 79,
+      "poder": 4
+    }
+  ],
+  "escaleras": [
+    {
+      "base": 4,
+      "cima": 14,
+      "poder": 4
+    },
+    {
+      "base": 9,
+      "cima": 31,
+      "poder": 3
+    },
+    {
+      "base": 20,
+      "cima": 38,
+      "poder": 4
+    },
+    {
+      "base": 28,
+      "cima": 84,
+      "poder": 2
+    }
+  ],
+  "indiceTurnoActual": 0,
+  "turnos": 8
+}

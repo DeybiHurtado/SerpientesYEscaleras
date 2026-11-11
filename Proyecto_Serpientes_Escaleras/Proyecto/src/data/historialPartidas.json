@@ -1,0 +1,44 @@
+{
+  "lista": [
+    {
+      "fecha": "2026-11-09 10:10",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 18,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-09 11:39",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "Consola",
+      "turnos": 26,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-09 11:43",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "esteban",
+      "turnos": 27,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-09 11:47",
+      "participantes": [
+        "esteban",
+        "Consola"
+      ],
+      "ganador": "esteban",
+      "turnos": 10,
+      "contraConsola": true
+    }
+  ]
+}

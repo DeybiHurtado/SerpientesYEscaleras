@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 
-public class PanelJugador extends JPanel {
+public class PantallaJugadores extends JPanel {
 
     public static final String[] COLORES = { "rojo", "azul", "verde", "amarillo" };
     public static final Color[] COLORES_DE_TEXTO = { new Color(0xE85A5A), new Color(0x5C8CF0),
@@ -47,7 +47,7 @@ public class PanelJugador extends JPanel {
     private volatile double yFicha;
     private Runnable alPulsarDados;
 
-    public PanelJugador(int indiceColor, String nombre) {
+    public PantallaJugadores(int indiceColor, String nombre) {
         this.indiceColor = indiceColor;
         this.nombre = nombre;
         this.imagenPanel = Recursos.imagen("jugadores/panel_" + COLORES[indiceColor] + ".png");
@@ -145,18 +145,18 @@ public class PanelJugador extends JPanel {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evento) {
-                if (PanelJugador.this.estaSobreLosDados(evento) && PanelJugador.this.alPulsarDados != null) {
-                    PanelJugador.this.alPulsarDados.run();
+                if (PantallaJugadores.this.estaSobreLosDados(evento) && PantallaJugadores.this.alPulsarDados != null) {
+                    PantallaJugadores.this.alPulsarDados.run();
                 }
             }
         });
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent evento) {
-                if (PanelJugador.this.estaSobreLosDados(evento)) {
-                    PanelJugador.this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                if (PantallaJugadores.this.estaSobreLosDados(evento)) {
+                    PantallaJugadores.this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 } else {
-                    PanelJugador.this.setCursor(Cursor.getDefaultCursor());
+                    PantallaJugadores.this.setCursor(Cursor.getDefaultCursor());
                 }
             }
         });

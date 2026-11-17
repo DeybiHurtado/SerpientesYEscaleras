@@ -13,19 +13,13 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-/**
- * El cuadro de un jugador en el tablero: barra con su nombre, dos dados y el cuadro que muestra
- * en qué casilla está. También guarda dónde está su ficha en el lienzo.
- *
- * Los valores que cambian desde los hilos son "volatile": así el hilo de dibujo siempre ve el valor más nuevo.
- */
+
 public class PanelJugador extends JPanel {
 
     public static final String[] COLORES = { "rojo", "azul", "verde", "amarillo" };
     public static final Color[] COLORES_DE_TEXTO = { new Color(0xE85A5A), new Color(0x5C8CF0),
             new Color(0x55CC78), new Color(0xF0CC3C) };
 
-    // Medidas dentro de la imagen del panel (en píxeles de la imagen original): { x, y, ancho, alto }
     private static final int[][][] RECTANGULOS_DADOS = {
             { { 7, 79, 55, 57 }, { 71, 79, 54, 57 } },
             { { 147, 6, 55, 57 }, { 211, 6, 54, 57 } },
@@ -33,7 +27,6 @@ public class PanelJugador extends JPanel {
             { { 138, 76, 56, 55 }, { 204, 77, 56, 54 } } };
     private static final int[][] RECTANGULO_POSICION = { { 205, 74, 69, 69 }, { 2, 0, 69, 69 },
             { 207, 3, 69, 69 }, { 4, 72, 68, 63 } };
-    // Hueco libre entre los dados y el cuadro de posición, donde se escribe "¡LANZA!": { x, ancho }
     private static final int[][] HUECO_DE_AYUDA = { { 125, 80 }, { 71, 76 }, { 130, 77 }, { 72, 66 } };
     private static final boolean[] BARRA_ABAJO = { false, true, true, false };
     private static final int ALTO_BARRA = 66;
@@ -63,7 +56,6 @@ public class PanelJugador extends JPanel {
         this.activarMouse();
     }
 
-    // ---------- Datos que cambian durante la partida ----------
 
     public String getNombre() {
         return this.nombre;
@@ -97,7 +89,6 @@ public class PanelJugador extends JPanel {
         this.repaint();
     }
 
-    /** Mientras los dados están rodando se dibujan un poco girados (el giro cambia en cada cuadro). */
     public void setLanzando(boolean lanzando, double giro) {
         this.lanzando = lanzando;
         this.giroDeLosDados = giro;
@@ -147,12 +138,10 @@ public class PanelJugador extends JPanel {
         return this.imagenPanel.getHeight();
     }
 
-    /** Lo que debe pasar cuando el jugador hace clic sobre sus dados. */
     public void setAlPulsarDados(Runnable alPulsarDados) {
         this.alPulsarDados = alPulsarDados;
     }
 
-    // ---------- Mouse: clic sobre los dados ----------
 
     private void activarMouse() {
         this.addMouseListener(new MouseAdapter() {
@@ -175,7 +164,6 @@ public class PanelJugador extends JPanel {
         });
     }
 
-    /** ¿El mouse está sobre la zona de los dos dados? (se convierte la posición a píxeles de la imagen) */
     private boolean estaSobreLosDados(MouseEvent evento) {
         double escala = (double) this.getWidth() / this.imagenPanel.getWidth();
         double x = evento.getX() / escala;
@@ -187,7 +175,6 @@ public class PanelJugador extends JPanel {
         return dentroEnX && dentroEnY;
     }
 
-    // ---------- Dibujo ----------
 
     @Override
     protected void paintComponent(Graphics graficos) {
@@ -196,7 +183,6 @@ public class PanelJugador extends JPanel {
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
-        // A partir de aquí se dibuja en píxeles de la imagen original; g.scale lo ajusta al tamaño real
         double escala = (double) this.getWidth() / this.imagenPanel.getWidth();
         g.scale(escala, escala);
         g.drawImage(this.imagenPanel, 0, 0, null);
@@ -253,7 +239,6 @@ public class PanelJugador extends JPanel {
         d.setStroke(new BasicStroke(2.5f));
         d.drawRoundRect(x + 1, y + 1, ancho - 2, alto - 2, 10, 10);
 
-        // Los puntos se ubican en una cuadrícula de 3x3 (posiciones 0 a 8, de izquierda a derecha y de arriba abajo)
         int[][] puntosPorValor = { {}, { 4 }, { 0, 8 }, { 0, 4, 8 }, { 0, 2, 6, 8 }, { 0, 2, 4, 6, 8 },
                 { 0, 2, 3, 5, 6, 8 } };
         double[] fraccion = { 0.26, 0.5, 0.74 };
@@ -266,14 +251,12 @@ public class PanelJugador extends JPanel {
         d.dispose();
     }
 
-    /** El cuadro vacío junto a los dados muestra el número de la casilla donde está el jugador. */
     private void dibujarPosicion(Graphics2D g) {
         int[] caja = RECTANGULO_POSICION[this.indiceColor];
         Recursos.textoCentrado(g, String.valueOf(this.posicion), caja[0] + caja[2] / 2, caja[1] + caja[3] / 2, 36,
                 this.colorDelJugador, caja[2] - 18);
     }
 
-    /** Cuando es el turno de un jugador humano, aparece "¡LANZA!" junto a sus dados. */
     private void dibujarAyuda(Graphics2D g) {
         if (!(this.esTurno && this.esperandoLanzamiento)) {
             return;

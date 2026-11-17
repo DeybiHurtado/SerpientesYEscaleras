@@ -25,7 +25,7 @@ public class PantallaIndividual extends Pantalla {
 
         BotonImagen botonVolver = this.agregar(this.crearBoton("VOLVER"), 40, 790, 250, 70);
         BotonImagen botonComenzar = this.agregar(this.crearBoton("COMENZAR"), 710, 790, 250, 70);
-        botonVolver.setSeleccionado(true);
+        botonComenzar.setSeleccionado(true);
         botonVolver.alHacerClic(evento -> this.ventana.abrirSuperposicion("modo"));
         botonComenzar.alHacerClic(evento -> this.comenzar());
     }

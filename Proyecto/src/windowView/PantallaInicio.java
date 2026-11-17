@@ -10,10 +10,11 @@ public class PantallaInicio extends Pantalla {
         super(1440, 900, "fondos/inicio.png");
         this.ventana = ventana;
 
-        BotonImagen botonJugar = this.agregar(this.crearBoton("JUGAR"), 572, 503, 378, 99);
-        BotonImagen botonAjustes = this.agregar(this.crearBoton("AJUSTES"), 572, 612, 378, 99);
-        BotonImagen botonSalir = this.agregar(this.crearBoton("SALIR"), 572, 721, 378, 99);
-        BotonRedondo botonInfo = this.agregar(new BotonRedondo(BotonRedondo.Tipo.INFO, "Reglas de juego"), 37, 820, 50, 50);
+        BotonImagen botonJugar = this.agregar(this.crearBoton("JUGAR"), 572, 410, 359,94);
+        BotonImagen botonAjustes = this.agregar(this.crearBoton("AJUSTES"), 572, 622,359,94);
+        BotonImagen botonSalir = this.agregar(this.crearBoton("SALIR"), 572, 731, 359,94);
+        BotonImagen botonEstadisticas = this.agregar(this.crearBoton("ESTADISTICAS"),572, 513, 359,94);
+        BotonRedondo botonInfo = this.agregar(new BotonRedondo(BotonRedondo.Tipo.INFO, "Reglas de juego"), 37, 810, 50, 50);
 
         botonJugar.setSeleccionado(true);
 
@@ -21,6 +22,7 @@ public class PantallaInicio extends Pantalla {
         botonAjustes.alHacerClic(evento -> this.ventana.abrirSuperposicion("ajustes"));
         botonSalir.alHacerClic(evento -> this.ventana.abrirSuperposicion("salir"));
         botonInfo.alHacerClic(evento -> this.ventana.abrirSuperposicion("reglas"));
+        botonEstadisticas.alHacerClic(evento -> this.ventana.mostrar("estadisticas"));
     }
 
     private BotonImagen crearBoton(String texto) {
@@ -29,7 +31,7 @@ public class PantallaInicio extends Pantalla {
 
     @Override
     protected void dibujar(Graphics2D g) {
-        g.drawImage(Recursos.imagen("fondos/titulo.png"), 268, 120, null);
+        g.drawImage(Recursos.imagen("fondos/titulo.png"), 258, 60, null);
     }
 }
 

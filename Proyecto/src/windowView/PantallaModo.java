@@ -14,7 +14,7 @@ public class PantallaModo extends Pantalla {
         BotonImagen botonIndividual = this.agregar(this.crearBoton("INDIVIDUAL"), 250, 300, 500, 110);
         BotonImagen botonMultijugador = this.agregar(this.crearBoton("MULTIJUGADOR"), 250, 470, 500, 110);
         BotonImagen botonVolver = this.agregar(this.crearBoton("VOLVER"), 40, 790, 250, 70);
-        botonVolver.setSeleccionado(true);
+        botonIndividual.setSeleccionado(true);
 
         botonIndividual.alHacerClic(evento -> this.ventana.abrirSuperposicion("individual"));
         botonMultijugador.alHacerClic(evento -> this.ventana.abrirSuperposicion("jugadores"));

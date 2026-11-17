@@ -23,6 +23,7 @@ public class VentanaGrafica extends JFrame {
 
     private final PantallaTablero pantallaTablero;
     private final PantallaCarga pantallaCarga;
+    private final PantallaEstadisticas pantallaEstadisticas;
 
 
     private String pantallaActual = "inicio";
@@ -34,11 +35,14 @@ public class VentanaGrafica extends JFrame {
 
         this.pantallaTablero = new PantallaTablero(this);
         this.pantallaCarga = new PantallaCarga(this);
+        this.pantallaEstadisticas = new PantallaEstadisticas(this);
      
         
         this.panelPrincipal.add(new PantallaInicio(this), "inicio");
         this.panelPrincipal.add(this.pantallaCarga, "carga");
         this.panelPrincipal.add(this.pantallaTablero, "tablero");
+        this.panelPrincipal.add(this.pantallaEstadisticas, "estadisticas");
+
     
 
         this.ventanasEmergentes.put("modo", new PantallaModo(this));

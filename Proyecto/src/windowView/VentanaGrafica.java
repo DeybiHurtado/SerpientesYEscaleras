@@ -120,8 +120,10 @@ public class VentanaGrafica extends JFrame {
     }
 
     public void mostrarGanador(String nombre) {
-        this.pantallaTablero.detenerPartida();
-        this.abrirSuperposicion(nombre);
+        this.pantallaTablero.detenerPartida(); 
+        PantallaGanador pantallaGanador = (PantallaGanador) this.ventanasEmergentes.get("ganador");
+    pantallaGanador.setNombreGanador(nombre);
+    this.abrirSuperposicion("ganador");
     }
 
     public void volverAlMenu() {

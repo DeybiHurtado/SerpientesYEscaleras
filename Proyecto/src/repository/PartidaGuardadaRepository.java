@@ -2,15 +2,14 @@ package repository;
 
 import model.PartidaGuardada;
 import persistance.JsonRepository;
-import persistance.Rutas;
+
 
 
 public class PartidaGuardadaRepository {
     private JsonRepository<PartidaGuardada> repository;
 
     public PartidaGuardadaRepository() {
-        this.repository = new JsonRepository<>(Rutas.data("partidaGuardada.json"), PartidaGuardada.class);
-    }
+this.repository = new JsonRepository<>("src/data/partidaGuardada.json", PartidaGuardada.class);    }
 
     public boolean hayPartida() {
         return repository.readFile() != null;

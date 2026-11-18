@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import model.Jugador;
 import model.Jugadores;
 import persistance.JsonRepository;
-import persistance.Rutas;
+
 
 public class JugadoresRepository {
       private JsonRepository<Jugadores> repository;
     private Jugadores misJugadores;
 
     public JugadoresRepository(){
-        this.repository = new JsonRepository<>(Rutas.data("jugadoresData.json"), Jugadores.class);
-        this.misJugadores= this.repository.readFile();
+this.repository = new JsonRepository<>("src/data/jugadoresData.json", Jugadores.class);      
+  this.misJugadores= this.repository.readFile();
         if(this.misJugadores == null){
             this.misJugadores= new Jugadores();
         }

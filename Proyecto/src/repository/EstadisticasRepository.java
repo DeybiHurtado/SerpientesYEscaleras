@@ -6,14 +6,13 @@ import model.EstadisticaJugador;
 import model.Estadisticas;
 import model.Jugador;
 import persistance.JsonRepository;
-import persistance.Rutas;
+
 
 public class EstadisticasRepository {
     private JsonRepository<Estadisticas> repository;
 
     public EstadisticasRepository() {
-        this.repository = new JsonRepository<>(Rutas.data("estadisticas.json"), Estadisticas.class);
-    }
+this.repository = new JsonRepository<>("src/data/estadisticas.json", Estadisticas.class);    }
 
     public void registrarPartida(ArrayList<Jugador> jugadores, String nombreGanador) {
       

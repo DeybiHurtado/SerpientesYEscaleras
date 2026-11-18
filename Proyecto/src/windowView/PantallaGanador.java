@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 public class PantallaGanador extends Pantalla {
 
     private final VentanaGrafica ventana;
-    private String nombreGanador = "JUGADOR n";
+    private String nombreGanador = "JUGADOR n°";
 
     public PantallaGanador(VentanaGrafica ventana) {
         super(1200, 900, "fondos/reglas.png");

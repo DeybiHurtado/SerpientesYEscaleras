@@ -44,8 +44,10 @@ public class PantallaTablero extends Pantalla {
 
         BotonRedondo botonCasa = this.agregar(new BotonRedondo(BotonRedondo.Tipo.CASA, "Guardar y salir"), 30, 454, 52, 52);
         BotonRedondo botonInfo = this.agregar(new BotonRedondo(BotonRedondo.Tipo.INFO, "Reglas de juego"), 1358, 454, 52, 52);
+        BotonRedondo botonAjustes = this.agregar( new BotonRedondo( BotonRedondo.Tipo.CASA, "Ajustes"), 1358, 508, 52,52);
         botonCasa.alHacerClic(evento -> this.ventana.abrirSuperposicion("guardar"));
         botonInfo.alHacerClic(evento -> this.ventana.abrirSuperposicion("reglas"));
+        botonAjustes.alHacerClic(evento -> this.ventana.abrirSuperposicion("ajustes"));
 
    
         this.agregar(this.ventanaAviso, (1440 - VentanaAviso.ANCHO_DISENO) / 2, (900 - VentanaAviso.ALTO_DISENO) / 2,

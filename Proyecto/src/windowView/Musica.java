@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 public final class Musica {
 
     private static Clip sonido;
-    private static boolean activada = true;
+    private static boolean activada = false;
 
     private Musica() {
     }

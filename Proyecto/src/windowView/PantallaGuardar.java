@@ -14,7 +14,7 @@ public class PantallaGuardar extends Pantalla {
         BotonImagen botonGuardar = this.agregar(this.crearBoton("GUARDAR Y SALIR"), 250, 360, 500, 100);
         BotonImagen botonSalirSinGuardar = this.agregar(this.crearBoton("SALIR SIN GUARDAR"), 250, 490, 500, 100);
         BotonImagen botonCancelar = this.agregar(this.crearBoton("CANCELAR"), 250, 620, 500, 100);
-        botonGuardar.setSeleccionado(true);
+        botonCancelar.setSeleccionado(true);
 
         botonGuardar.alHacerClic(evento -> {
             this.ventana.guardarPartida();

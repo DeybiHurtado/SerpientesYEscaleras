@@ -19,7 +19,7 @@ import javax.swing.JComponent;
 public class BotonRedondo extends JComponent {
 
     public enum Tipo {
-        INFO, CASA
+        INFO, CASA, OVALO
     }
 
     private final Tipo tipo;
@@ -79,12 +79,16 @@ public class BotonRedondo extends JComponent {
 
         if (this.tipo == Tipo.INFO) {
             this.dibujarLetraI(g, diametro);
-        } else {
+        } else if(this.tipo == Tipo.CASA){
             this.dibujarCasita(g, diametro);
+        }else{
+            this.dibujarOvalo(g);
         }
         g.dispose();
     }
-
+ private void dibujarOvalo(Graphics2D g){
+    
+ }
     private void dibujarLetraI(Graphics2D g, int diametro) {
         Font fuente = Recursos.fuente(diametro * 0.55f, true);
         FontMetrics medidas = g.getFontMetrics(fuente);

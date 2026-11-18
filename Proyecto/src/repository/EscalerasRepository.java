@@ -1,13 +1,13 @@
 package repository;
 
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Escalera;
 import model.Escaleras;
 import persistance.JsonRepository;
-import persistance.Rutas;
+
 
 public class EscalerasRepository {
 
@@ -15,10 +15,10 @@ public class EscalerasRepository {
     private Escaleras misEscaleras;
 
     public EscalerasRepository() {
-        this.repository = new JsonRepository<>(Rutas.data("Escaleras.json"), Escaleras.class);
-        if (new File(Rutas.data("Escaleras.json")).exists()) {
-            this.misEscaleras = repository.readFile();
-        }
+       this.repository = new JsonRepository<>("src/data/Escaleras.json", Escaleras.class);
+if (this.repository.exists()) {
+    this.misEscaleras = this.repository.readFile();
+}
         if (this.misEscaleras == null) {
             this.misEscaleras = new Escaleras();
         }

@@ -1,23 +1,23 @@
 package repository;
 
-import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Serpiente;
 import model.Serpientes;
 import persistance.JsonRepository;
-import persistance.Rutas;
+
 
 public class SerpientesRepository {
     private JsonRepository<Serpientes> repository;
     private Serpientes misSerpientes;
 
     public SerpientesRepository() {
-        this.repository = new JsonRepository<>(Rutas.data("Serpientes.json"), Serpientes.class);
-        if (new File(Rutas.data("Serpientes.json")).exists()) {
-            this.misSerpientes = repository.readFile();
-        }
+       this.repository = new JsonRepository<>("src/data/Serpientes.json", Serpientes.class);
+if (this.repository.exists()) {
+    this.misSerpientes = this.repository.readFile();
+}
         if (this.misSerpientes == null) {
             this.misSerpientes = new Serpientes();
         }

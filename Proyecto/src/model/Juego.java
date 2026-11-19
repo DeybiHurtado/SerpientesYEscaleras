@@ -149,10 +149,7 @@ public Jugador getJugadorActual() {
         if (ganador == null) {
             return;
         }
-        ArrayList<String> participantes = new ArrayList<>();
-        for (Jugador j : jugadoresActuales) {
-            participantes.add(j.getNombre());
-        }
+        Jugadores participantes = new Jugadores(new ArrayList<>(jugadoresActuales));
         String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
         partidasRepo.guardarPartida(new Partida(fecha, participantes, ganador.getNombre(), turnos, isContraConsola()));

@@ -1,11 +1,8 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Partida {
     private String fecha;
     private Jugadores participantes;
-    private Jugador currentJugador;
     private String ganador;
     private int turnos;
     private boolean contraConsola;

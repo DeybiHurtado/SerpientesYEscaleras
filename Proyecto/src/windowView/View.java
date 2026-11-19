@@ -1,9 +1,9 @@
-/* 
 package windowView;
 
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import model.Escalera;
 import model.EstadisticaJugador;
@@ -189,7 +189,10 @@ public void mostrarGanador(String nombreGanador) {
         int desde = Math.max(0, partidas.size() - 10);
         for (int i = partidas.size() - 1; i >= desde; i--) {
             Partida p = partidas.get(i);
-            System.out.println("  " + p.getFecha() + " | " + String.join(", ", p.getParticipantes())
+            String nombres = p.getParticipantes().getArrayJugadores().stream()
+                    .map(Jugador::getNombre)
+                    .collect(Collectors.joining(", "));
+            System.out.println("  " + p.getFecha() + " | " + nombres
                     + " | ganó: " + p.getGanador() + " | turnos: " + p.getTurnos());
         }
     }
@@ -212,4 +215,3 @@ public void mostrarGanador(String nombreGanador) {
         System.out.println("\nDurante la partida puedes escribir G para guardarla y M para volver al menú.");
     }
 }
-    */

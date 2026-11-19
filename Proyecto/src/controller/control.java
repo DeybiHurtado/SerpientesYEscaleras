@@ -6,6 +6,7 @@ import model.Juego;
 
 import model.PartidaGuardada;
 import model.Tablero;
+import windowView.View;
 import java.util.ArrayList;
 
 public class control {

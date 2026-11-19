@@ -16,6 +16,10 @@ public class Jugadores {
 
      }
 
+     public Jugadores(ArrayList<Jugador> jugadores){
+        this.ArrayJugadores = new ArrayList<>(jugadores);
+     }
+
      public Jugador getJugador() {
          return jugador;
      }

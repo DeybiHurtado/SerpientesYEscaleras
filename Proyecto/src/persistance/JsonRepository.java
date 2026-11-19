@@ -13,7 +13,11 @@ public class JsonRepository<T> {
     private final Class<T> type;
 
      public JsonRepository(String filePath, Class<T> type) {
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this(filePath, type, new GsonBuilder().setPrettyPrinting().create());
+    }
+
+    public JsonRepository(String filePath, Class<T> type, Gson gson) {
+        this.gson = gson;
         this.filePath = this.corregirRuta(filePath);
         this.type = type;
     }

@@ -54,6 +54,7 @@ public class VentanaGrafica extends JFrame {
         this.ventanasEmergentes.put("salir", new PantallaSalir(this));
         this.ventanasEmergentes.put("guardar", new PantallaGuardar(this));
         this.ventanasEmergentes.put("ganador", new PantallaGanador(this));
+        this.ventanasEmergentes.put("detallePartida", new PantallaDetallePartida(this));  
 
         this.setContentPane(this.panelPrincipal);
         this.setGlassPane(this.superposicion); 

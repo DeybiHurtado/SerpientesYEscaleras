@@ -12,6 +12,10 @@ import java.util.concurrent.Semaphore;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import model.RegistroPartida;
+import model.ResultadoJugador;
+import repository.RegistroPartidasRepository;
+
 public class PantallaTablero extends Pantalla {
 
     private static final String[] TEMAS = { "default", "marino", "desierto" };
@@ -28,6 +32,7 @@ public class PantallaTablero extends Pantalla {
     private final CasillaBoton[][] casillas = new CasillaBoton[10][10]; 
     private final PanelJugador[] paneles = new PanelJugador[4];
     private final boolean[] esComputadora = new boolean[4];
+    private final int[] jugadas = new int[4];
     private final VentanaAviso ventanaAviso = new VentanaAviso();
     private final Semaphore semaforoLanzamiento = new Semaphore(0);
 
@@ -304,6 +309,7 @@ public class PantallaTablero extends Pantalla {
     }
 
     private void ganar(PanelJugador panel) throws InterruptedException {
+        this.guardarRegistroDeLaPartida();
         this.mostrarAviso(1500, "¡LLEGÓ A LA META!", 40, Recursos.DORADO, panel.getNombre(), 56,
                 panel.getColorDelJugador());
         final String nombreGanador = panel.getNombre();
@@ -343,6 +349,13 @@ public class PantallaTablero extends Pantalla {
         new RegistroPartidasRepository().guardarRegistro(registro);
     }
     
+    private ArrayList<String> textosDeSaltos(int[][] saltos) {
+    ArrayList<String> textos = new ArrayList<>();
+    for (int[] salto : saltos) {
+        textos.add("De la " + salto[0] + " a la " + salto[1]);
+    }
+    return textos;
+}
     private void iluminarCasilla(int numero) {
         SwingUtilities.invokeLater(() -> {
             if (this.casillaIluminada != null) {

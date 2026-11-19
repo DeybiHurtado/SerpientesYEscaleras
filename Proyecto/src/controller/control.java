@@ -3,7 +3,7 @@ package controller;
 
 import model.Jugador;
 import model.Juego;
-import windowView.View;
+
 import model.PartidaGuardada;
 import model.Tablero;
 import java.util.ArrayList;

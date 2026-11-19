@@ -19,7 +19,7 @@ import javax.swing.JComponent;
 public class BotonRedondo extends JComponent {
 
     public enum Tipo {
-        INFO, CASA, OVALO
+        INFO, CASA, AJUSTES
     }
 
     private final Tipo tipo;

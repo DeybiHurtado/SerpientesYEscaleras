@@ -3,6 +3,9 @@ package windowView;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
@@ -328,6 +331,18 @@ public class PantallaTablero extends Pantalla {
         }
     }
 
+    private void guardarRegistroDeLaPartida() {
+        ArrayList<ResultadoJugador> resultados = new ArrayList<>();
+        for (int i = 0; i < this.cantidadJugadores; i++) {
+            PanelJugador panel = this.paneles[i];
+            resultados.add(new ResultadoJugador(panel.getNombre(), this.jugadas[i], panel.getPosicion()));
+        }
+        String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        RegistroPartida registro = new RegistroPartida(fecha, resultados, this.textosDeSaltos(Casillas.ESCALERAS),
+                this.textosDeSaltos(Casillas.SERPIENTES));
+        new RegistroPartidasRepository().guardarRegistro(registro);
+    }
+    
     private void iluminarCasilla(int numero) {
         SwingUtilities.invokeLater(() -> {
             if (this.casillaIluminada != null) {

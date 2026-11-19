@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import model.RegistroPartida;
 
 
 public class VentanaGrafica extends JFrame {
@@ -124,6 +125,16 @@ public class VentanaGrafica extends JFrame {
         PantallaGanador pantallaGanador = (PantallaGanador) this.ventanasEmergentes.get("ganador");
     pantallaGanador.setNombreGanador(nombre);
     this.abrirSuperposicion("ganador");
+    }
+        public void mostrarEstadisticas() {
+        this.pantallaEstadisticas.actualizar();
+        this.mostrar("estadisticas");
+    }
+
+     public void abrirDetallePartida(RegistroPartida registro) {
+        PantallaDetallePartida detalle = (PantallaDetallePartida) this.ventanasEmergentes.get("detallePartida");
+        detalle.mostrarRegistro(registro);
+        this.abrirSuperposicion("detallePartida");
     }
 
     public void volverAlMenu() {

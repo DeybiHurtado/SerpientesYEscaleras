@@ -23,7 +23,7 @@ public class PantallaInicio extends Pantalla {
         botonAjustes.alHacerClic(evento -> this.ventana.abrirSuperposicion("ajustes"));
         botonSalir.alHacerClic(evento -> this.ventana.abrirSuperposicion("salir"));
         botonInfo.alHacerClic(evento -> this.ventana.abrirSuperposicion("reglas"));
-        botonEstadisticas.alHacerClic(evento -> this.ventana.mostrar("estadisticas"));
+        botonEstadisticas.alHacerClic(evento -> this.ventana.mostrarEstadisticas());
     }
 
     private BotonImagen crearBoton(String texto) {

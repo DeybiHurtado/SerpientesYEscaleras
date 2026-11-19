@@ -12,10 +12,18 @@ public class JsonRepository<T> {
     private final String filePath;
     private final Class<T> type;
 
-    public JsonRepository(String filePath, Class<T> type) {
+     public JsonRepository(String filePath, Class<T> type) {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
-        this.filePath = filePath;
+        this.filePath = this.corregirRuta(filePath);
         this.type = type;
+    }
+
+   
+    private String corregirRuta(String ruta) {
+        if (new File("Proyecto/src").isDirectory()) {
+            return "Proyecto/" + ruta;
+        }
+        return ruta;
     }
     
     public void writeFile(T data){

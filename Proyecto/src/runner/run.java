@@ -2,7 +2,7 @@ package runner;
 
 import controller.control;
 
-public class Run{
+public class run{
    
     public static void main(String[] args) {
         control control = new controller.control();

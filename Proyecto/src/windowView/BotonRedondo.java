@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.JComponent;
 
@@ -82,13 +83,11 @@ public class BotonRedondo extends JComponent {
         } else if(this.tipo == Tipo.CASA){
             this.dibujarCasita(g, diametro);
         }else{
-            this.dibujarOvalo(g);
+            this.dibujarAjustes(g,diametro);
         }
         g.dispose();
     }
- private void dibujarOvalo(Graphics2D g){
-    
- }
+
     private void dibujarLetraI(Graphics2D g, int diametro) {
         Font fuente = Recursos.fuente(diametro * 0.55f, true);
         FontMetrics medidas = g.getFontMetrics(fuente);
@@ -103,7 +102,48 @@ public class BotonRedondo extends JComponent {
         int[] techoY = { (int) (d * 0.22), (int) (d * 0.50), (int) (d * 0.50) };
         g.fillPolygon(new Polygon(techoX, techoY, 3));
         g.fillRect((int) (d * 0.30), (int) (d * 0.50), (int) (d * 0.40), (int) (d * 0.28));
-        g.setColor(new Color(0, 10, 20));
+          g.setColor(new Color(0, 10, 20));
         g.fillRect((int) (d * 0.45), (int) (d * 0.60), (int) (d * 0.10), (int) (d * 0.18));
     }
+
+    private void dibujarAjustes(Graphics2D g, int d){
+         int centro = d / 2;
+
+        // 2. Medidas proporcionales al diámetro 'd' del botón
+        int radioExterior = (int) (d * 0.21);
+        int radioInterior = (int) (d * 0.09);
+        int numeroDientes = 8;
+        int anchoDiente = Math.max(2, (int) (d * 0.09));
+        int altoDiente = Math.max(2, (int) (d * 0.08));
+        int redondeo = Math.max(1, (int) (d * 0.03));
+
+        // Nota: NO cambiamos el color aquí porque 'g' ya trae el color dorado del borde
+
+        // 3. Dibujar los dientes
+        for (int i = 0; i < numeroDientes; i++) {
+            AffineTransform original = g.getTransform();
+            double angulo = Math.toRadians((360.0 / numeroDientes) * i);
+
+            g.translate(centro, centro);
+            g.rotate(angulo);
+
+            g.fillRoundRect(
+                -anchoDiente / 2,
+                -radioExterior - (altoDiente / 2),
+                anchoDiente,
+                altoDiente,
+                redondeo,
+                redondeo
+            );
+
+            g.setTransform(original);
+        }
+
+        // 4. Cuerpo principal del engranaje (dorado)
+        g.fillOval(centro - radioExterior, centro - radioExterior, radioExterior * 2, radioExterior * 2);
+
+        // 5. Agujero central (del mismo color oscuro que la puerta de la casita)
+        g.setColor(new Color(0, 10, 20));
+        g.fillOval(centro - radioInterior, centro - radioInterior, radioInterior * 2, radioInterior * 2);
+     }
 }

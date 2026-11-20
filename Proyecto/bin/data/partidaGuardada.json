@@ -1,73 +1,103 @@
 {
-  "fechaGuardado": "2026-10-26 00:03",
+  "fechaGuardado": "2026-11-20 18:17",
   "jugadores": [
     {
-      "id": 6,
-      "nombre": "maria",
-      "posicion": 1,
+      "id": 22,
+      "nombre": "hjnyh",
+      "posicion": 15,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 1,
-      "esConsola": false
+      "casillaMaxima": 15,
+      "esConsola": false,
+      "jugadas": 2
     },
     {
-      "id": 7,
-      "nombre": "Consola",
-      "posicion": 1,
+      "id": 23,
+      "nombre": "BOT 1",
+      "posicion": 17,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 1,
-      "esConsola": true
+      "casillaMaxima": 17,
+      "esConsola": true,
+      "jugadas": 2
+    },
+    {
+      "id": 24,
+      "nombre": "BOT 2",
+      "posicion": 13,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 13,
+      "esConsola": true,
+      "jugadas": 2
+    },
+    {
+      "id": 25,
+      "nombre": "BOT 3",
+      "posicion": 10,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 10,
+      "esConsola": true,
+      "jugadas": 1
     }
   ],
   "serpientes": [
     {
-      "cabeza": 17,
+      "cabeza": 58,
+      "cola": 22,
+      "poder": 4
+    },
+    {
+      "cabeza": 94,
+      "cola": 55,
+      "poder": 4
+    },
+    {
+      "cabeza": 26,
       "cola": 7,
-      "poder": 1
+      "poder": 4
     },
     {
-      "cabeza": 54,
-      "cola": 34,
-      "poder": 3
-    },
-    {
-      "cabeza": 62,
-      "cola": 19,
-      "poder": 1
-    },
-    {
-      "cabeza": 98,
-      "cola": 79,
+      "cabeza": 52,
+      "cola": 32,
       "poder": 4
     }
   ],
   "escaleras": [
     {
-      "base": 4,
-      "cima": 14,
-      "poder": 1
+      "base": 44,
+      "cima": 83,
+      "poder": 4,
+      "usada": false
     },
     {
-      "base": 9,
-      "cima": 31,
-      "poder": 3
+      "base": 3,
+      "cima": 24,
+      "poder": 2,
+      "usada": false
     },
     {
-      "base": 20,
-      "cima": 38,
-      "poder": 3
+      "base": 14,
+      "cima": 48,
+      "poder": 4,
+      "usada": false
     },
     {
-      "base": 28,
-      "cima": 84,
-      "poder": 4
+      "base": 72,
+      "cima": 89,
+      "poder": 4,
+      "usada": false
     }
   ],
-  "indiceTurnoActual": 0,
-  "turnos": 0
+  "indiceTurnoActual": 2,
+  "turnos": 7
 }

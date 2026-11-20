@@ -314,6 +314,43 @@
         "De la 26 a la 7",
         "De la 52 a la 32"
       ]
+    },
+    {
+      "fecha": "2026-11-20 18:16",
+      "jugadores": [
+        {
+          "nombre": "hjnyh",
+          "jugadas": 4,
+          "casillaFinal": 59
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 4,
+          "casillaFinal": 62
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 4,
+          "casillaFinal": 28
+        },
+        {
+          "nombre": "BOT 3",
+          "jugadas": 5,
+          "casillaFinal": 100
+        }
+      ],
+      "escaleras": [
+        "De la 44 a la 83",
+        "De la 3 a la 24",
+        "De la 14 a la 48",
+        "De la 72 a la 89"
+      ],
+      "serpientes": [
+        "De la 58 a la 22",
+        "De la 94 a la 55",
+        "De la 26 a la 7",
+        "De la 52 a la 32"
+      ]
     }
   ]
 }

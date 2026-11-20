@@ -42,7 +42,7 @@ public class PartidasRepository {
                             partida.get("contraConsola").getAsBoolean());
                 })
                 .create();
-        this.repository = new JsonRepository<>("src/data/historialPartidas.json", Partidas.class, gson);
+        this.repository = new JsonRepository<Partidas>("src/data/historialPartidas.json", Partidas.class, gson);
         this.misPartidas = repository.readFile();
         if (this.misPartidas == null) {
             this.misPartidas = new Partidas();

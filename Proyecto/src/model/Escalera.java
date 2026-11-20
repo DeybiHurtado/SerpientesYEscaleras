@@ -4,7 +4,7 @@ public class Escalera {
     private int base;
     private int cima;
     private int poder;
-    private transient boolean usada = false;
+    private boolean usada = false;
 
     public Escalera(int base, int cima, int poder) {
         this.base = base;

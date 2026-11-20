@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 public class PantallaModo extends Pantalla {
 
     private final VentanaGrafica ventana;
+    private final BotonImagen botonContinuar;
 
     public PantallaModo(VentanaGrafica ventana) {
         super(1000, 900, "fondos/ajustes.png");
@@ -13,12 +14,19 @@ public class PantallaModo extends Pantalla {
 
         BotonImagen botonIndividual = this.agregar(this.crearBoton("INDIVIDUAL"), 250, 300, 500, 110);
         BotonImagen botonMultijugador = this.agregar(this.crearBoton("MULTIJUGADOR"), 250, 470, 500, 110);
+        this.botonContinuar = this.agregar(this.crearBoton("CONTINUAR PARTIDA"), 250, 660, 500, 90);
         BotonImagen botonVolver = this.agregar(this.crearBoton("VOLVER"), 40, 790, 250, 70);
         botonIndividual.setSeleccionado(true);
 
         botonIndividual.alHacerClic(evento -> this.ventana.abrirSuperposicion("individual"));
         botonMultijugador.alHacerClic(evento -> this.ventana.abrirSuperposicion("jugadores"));
+        this.botonContinuar.alHacerClic(evento -> this.ventana.continuarPartida());
         botonVolver.alHacerClic(evento -> this.ventana.cerrarSuperposicion());
+        this.actualizarDisponibilidad();
+    }
+
+    public void actualizarDisponibilidad() {
+        this.botonContinuar.setVisible(this.ventana.getControlador().hayPartidaGuardada());
     }
 
     private BotonImagen crearBoton(String texto) {

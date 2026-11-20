@@ -2,13 +2,95 @@
   "lista": [
     {
       "fecha": "2026-10-26 10:14",
-      "participantes": [
-        "pepe",
-        "carlos"
-      ],
+      "participantes": {
+        "ArrayJugadores": [
+          {
+            "id": 16,
+            "nombre": "pepe",
+            "posicion": 1,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 1,
+            "esConsola": false,
+            "jugadas": 0
+          },
+          {
+            "id": 17,
+            "nombre": "carlos",
+            "posicion": 1,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 1,
+            "esConsola": false,
+            "jugadas": 0
+          }
+        ]
+      },
       "ganador": "pepe",
       "turnos": 10,
       "contraConsola": false
+    },
+    {
+      "fecha": "2026-11-20 18:16",
+      "participantes": {
+        "ArrayJugadores": [
+          {
+            "id": 18,
+            "nombre": "hjnyh",
+            "posicion": 59,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 59,
+            "esConsola": false,
+            "jugadas": 4
+          },
+          {
+            "id": 19,
+            "nombre": "BOT 1",
+            "posicion": 62,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 62,
+            "esConsola": true,
+            "jugadas": 4
+          },
+          {
+            "id": 20,
+            "nombre": "BOT 2",
+            "posicion": 28,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 28,
+            "esConsola": true,
+            "jugadas": 4
+          },
+          {
+            "id": 21,
+            "nombre": "BOT 3",
+            "posicion": 100,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 100,
+            "esConsola": true,
+            "jugadas": 5
+          }
+        ]
+      },
+      "ganador": "BOT 3",
+      "turnos": 17,
+      "contraConsola": true
     }
   ]
 }

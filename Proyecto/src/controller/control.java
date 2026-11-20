@@ -3,7 +3,7 @@ package controller;
 
 import model.Jugador;
 import model.Juego;
-
+import model.RegistroPartida;
 import model.PartidaGuardada;
 import model.Tablero;
 import windowView.View;
@@ -161,6 +161,18 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
 
     public void iniciarPartidaMultijugador(ArrayList<String> nombres) {
         this.juego.iniciarPartidaMultijugador(nombres);
+    }
+
+    public boolean continuarPartidaGuardada() {
+        return this.juego.continuarPartidaGuardada();
+    }
+
+    public boolean hayPartidaGuardada() {
+        return this.juego.hayPartidaGuardada();
+    }
+
+    public ArrayList<RegistroPartida> getRegistrosPartidas() {
+        return this.juego.getRegistroPartidasRepo().getTodas();
     }
 
     public void reiniciarPartida() {

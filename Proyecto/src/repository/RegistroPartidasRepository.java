@@ -11,7 +11,7 @@ public class RegistroPartidasRepository {
     private RegistroPartidas misRegistros;
 
     public RegistroPartidasRepository() {
-        this.repository = new JsonRepository<>("src/data/partidasGraficas.json", RegistroPartidas.class);
+        this.repository = new JsonRepository<>("src/data/PartidasGraficas.json", RegistroPartidas.class);
         this.misRegistros = this.repository.readFile();
         if (this.misRegistros == null) {
             this.misRegistros = new RegistroPartidas();

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import model.RegistroPartida;
 import model.ResultadoJugador;
-import repository.RegistroPartidasRepository;
 
 public class PantallaEstadisticas extends Pantalla {
 
@@ -71,8 +70,7 @@ public class PantallaEstadisticas extends Pantalla {
 
     // Se llama cada vez que se entra a la pantalla, para leer las partidas nuevas
     public void actualizar() {
-        RegistroPartidasRepository repositorio = new RegistroPartidasRepository();
-        this.todasLasPartidas = repositorio.getTodas();
+        this.todasLasPartidas = this.ventana.getControlador().getRegistrosPartidas();
         this.buscarJugador("");
     }
 

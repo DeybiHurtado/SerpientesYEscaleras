@@ -3,7 +3,7 @@ package windowView;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +12,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import controller.control;
+import model.Jugador;
 import model.RegistroPartida;
 
 
@@ -21,6 +23,7 @@ public class VentanaGrafica extends JFrame {
     private final JPanel panelPrincipal = new JPanel(this.paneles);
     private final Superposicion superposicion = new Superposicion();
     private final Map<String, Pantalla> ventanasEmergentes = new HashMap<>();
+    private final control controlador;
 
     private final PantallaTablero pantallaTablero;
     private final PantallaCarga pantallaCarga;
@@ -31,7 +34,8 @@ public class VentanaGrafica extends JFrame {
     private boolean guardadoAutomatico = false;
     private DatosPartida partidaActual;
 
-    public VentanaGrafica() {
+    public VentanaGrafica(control controlador) {
+        this.controlador = controlador;
         this.setTitle("Serpientes y Escaleras");
 
         this.pantallaTablero = new PantallaTablero(this);
@@ -90,6 +94,9 @@ public class VentanaGrafica extends JFrame {
     }
 
   public void abrirSuperposicion(String nombre) {
+        if (nombre.equals("modo")) {
+            ((PantallaModo) this.ventanasEmergentes.get("modo")).actualizarDisponibilidad();
+        }
         if (this.pantallaActual.equals("tablero")) {
             this.pantallaTablero.pausar();
         }
@@ -106,9 +113,39 @@ public class VentanaGrafica extends JFrame {
     }
 
      public void prepararPartida(DatosPartida datos) {
+        this.iniciarModelo(datos);
         this.partidaActual = datos;
         this.mostrar("carga");
         this.pantallaCarga.iniciar(datos);
+    }
+
+    private void iniciarModelo(DatosPartida datos) {
+        boolean esIndividual = datos.getCantidad() > 1 && datos.esComputadora(1);
+        if (esIndividual) {
+            this.controlador.iniciarPartidaIndividual(datos.getNombre(0), datos.getCantidad() - 1);
+            return;
+        }
+        ArrayList<String> nombres = new ArrayList<>();
+        for (int i = 0; i < datos.getCantidad(); i++) {
+            nombres.add(datos.getNombre(i));
+        }
+        this.controlador.iniciarPartidaMultijugador(nombres);
+    }
+
+    public void continuarPartida() {
+        if (!this.controlador.continuarPartidaGuardada()) {
+            return;
+        }
+        ArrayList<Jugador> jugadores = this.controlador.getJugadores();
+        String[] nombres = new String[jugadores.size()];
+        boolean[] sonComputadora = new boolean[jugadores.size()];
+        for (int i = 0; i < jugadores.size(); i++) {
+            nombres[i] = jugadores.get(i).getNombre();
+            sonComputadora[i] = jugadores.get(i).isEsConsola();
+        }
+        this.partidaActual = new DatosPartida(nombres, sonComputadora);
+        this.mostrar("carga");
+        this.pantallaCarga.iniciar(this.partidaActual);
     }
 
       public void empezarPartida() {
@@ -117,7 +154,7 @@ public class VentanaGrafica extends JFrame {
     }
 
     public void reiniciarPartida() {
-        this.partidaActual.reiniciar();
+        this.controlador.reiniciarPartida();
         this.empezarPartida();
     }
 
@@ -144,11 +181,11 @@ public class VentanaGrafica extends JFrame {
     }
 
     public void guardarPartida() {
-        try {
-            this.pantallaTablero.tomarFoto().guardar();
-        } catch (IOException error) {
-            System.out.println("No se pudo guardar la partida: " + error.getMessage());
-        }
+        this.controlador.guardarPartida();
+    }
+
+    public control getControlador() {
+        return this.controlador;
     }
 
     public void setTema(int tema) {

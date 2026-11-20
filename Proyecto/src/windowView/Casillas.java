@@ -8,9 +8,6 @@ public final class Casillas {
     public static final double ANCHO_CASILLA = 81.7;
     public static final double ALTO_CASILLA = 81.8;
 
-    public static final int[][] ESCALERAS = { { 44, 83 }, { 3, 24 }, { 14, 48 }, { 72, 89 } };
-    public static final int[][] SERPIENTES = { { 58, 22 }, { 94, 55 }, { 26, 7 }, { 52, 32 } };
-
     private Casillas() {
     }
 
@@ -36,26 +33,4 @@ public final class Casillas {
         return new double[] { x, y };
     }
 
-    public static int destino(int casilla) {
-        for (int[] escalera : ESCALERAS) {
-            if (escalera[0] == casilla) {
-                return escalera[1];
-            }
-        }
-        for (int[] serpiente : SERPIENTES) {
-            if (serpiente[0] == casilla) {
-                return serpiente[1];
-            }
-        }
-        return casilla;
-    }
-
-    public static boolean esEscalera(int casilla) {
-        for (int[] escalera : ESCALERAS) {
-            if (escalera[0] == casilla) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

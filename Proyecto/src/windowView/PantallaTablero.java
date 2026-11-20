@@ -3,18 +3,15 @@ package windowView;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import model.RegistroPartida;
-import model.ResultadoJugador;
-import repository.RegistroPartidasRepository;
+import model.Escalera;
+import model.Jugador;
+import model.Serpiente;
 
 public class PantallaTablero extends Pantalla {
 
@@ -32,7 +29,6 @@ public class PantallaTablero extends Pantalla {
     private final CasillaBoton[][] casillas = new CasillaBoton[10][10]; 
     private final PanelJugador[] paneles = new PanelJugador[4];
     private final boolean[] esComputadora = new boolean[4];
-    private final int[] jugadas = new int[4];
     private final VentanaAviso ventanaAviso = new VentanaAviso();
     private final Semaphore semaforoLanzamiento = new Semaphore(0);
 
@@ -97,18 +93,19 @@ public class PantallaTablero extends Pantalla {
     public void iniciarPartida(DatosPartida datos) {
         this.detenerPartida();
         this.cantidadJugadores = datos.getCantidad();
+        java.util.ArrayList<Jugador> jugadores = this.ventana.getControlador().getJugadores();
 
         for (int i = 0; i < 4; i++) {
             boolean juega = i < this.cantidadJugadores;
             this.paneles[i].setVisible(juega);
             if (juega) {
-                this.prepararPanel(i, datos);
+                this.prepararPanel(i, jugadores.get(i));
             }
         }
-        this.turnoActual = datos.getTurno();
+        this.turnoActual = this.ventana.getControlador().getIndiceTurno();
         this.partidaPausada = false;
         this.semaforoLanzamiento.drainPermits();
-        this.iluminarCasilla(0);
+        this.iluminarCasilla(jugadores.get(this.turnoActual).getPosicion());
         this.mostrarPresentacion();
 
         this.hilosJugadores = new HiloJugador[this.cantidadJugadores];
@@ -117,7 +114,7 @@ public class PantallaTablero extends Pantalla {
             this.hilosJugadores[i].start();
         }
 
-        final int primero = Math.max(0, Math.min(datos.getTurno(), this.cantidadJugadores - 1));
+        final int primero = Math.max(0, Math.min(this.turnoActual, this.cantidadJugadores - 1));
         this.temporizadorPresentacion = new Timer(2800, evento -> {
             this.ventanaAviso.ocultar();
             this.hilosJugadores[primero].darTurno();
@@ -127,16 +124,16 @@ public class PantallaTablero extends Pantalla {
         this.repaint();
     }
 
-    private void prepararPanel(int indice, DatosPartida datos) {
+    private void prepararPanel(int indice, Jugador jugador) {
         PanelJugador panel = this.paneles[indice];
-        this.esComputadora[indice] = datos.esComputadora(indice);
-        panel.setNombre(datos.getNombre(indice));
-        panel.setPosicion(datos.getPosicion(indice));
+        this.esComputadora[indice] = jugador.isEsConsola();
+        panel.setNombre(jugador.getNombre());
+        panel.setPosicion(jugador.getPosicion());
         panel.setDados(1, 1);
         panel.setLanzando(false, 0);
         panel.setEsTurno(false);
         panel.setEsperandoLanzamiento(false);
-        double[] centro = Casillas.centro(Math.max(1, datos.getPosicion(indice)));
+        double[] centro = Casillas.centro(jugador.getPosicion());
         panel.setFicha(centro[0] + DESPLAZAMIENTO_FICHAS[indice][0], centro[1] + DESPLAZAMIENTO_FICHAS[indice][1]);
     }
 
@@ -180,21 +177,6 @@ public class PantallaTablero extends Pantalla {
         this.partidaPausada = false;
     }
 
-    public DatosPartida tomarFoto() {
-        String[] nombres = new String[this.cantidadJugadores];
-        boolean[] computadora = new boolean[this.cantidadJugadores];
-        for (int i = 0; i < this.cantidadJugadores; i++) {
-            nombres[i] = this.paneles[i].getNombre();
-            computadora[i] = this.esComputadora[i];
-        }
-        DatosPartida datos = new DatosPartida(nombres, computadora);
-        for (int i = 0; i < this.cantidadJugadores; i++) {
-            datos.setPosicion(i, this.paneles[i].getPosicion());
-        }
-        datos.setTurno(Math.max(this.turnoActual, 0));
-        return datos;
-    }
-
     private void alPulsarDados(int indice) {
         PanelJugador panel = this.paneles[indice];
         boolean esSuTurno = (indice == this.turnoActual);
@@ -209,8 +191,18 @@ public class PantallaTablero extends Pantalla {
         this.turnoActual = indice;
         this.marcarPanelDelTurno(indice);
 
-        this.mostrarAviso(1100, "TURNO DE", 28, Recursos.CREMA, panel.getNombre(), 56, panel.getColorDelJugador());
+        controller.control controlador = this.ventana.getControlador();
+        if (!controlador.empezarTurno()) {
+            this.mostrarAviso(1300, "TURNO PERDIDO", 34, new Color(0xE35D4B),
+                    controlador.getMensajeTurno(), 24, Recursos.CREMA);
+            this.turnoActual = controlador.getIndiceTurno();
+            if (this.ventana.isGuardadoAutomatico()) {
+                this.ventana.guardarPartida();
+            }
+            return true;
+        }
 
+        this.mostrarAviso(1100, "TURNO DE", 28, Recursos.CREMA, panel.getNombre(), 56, panel.getColorDelJugador());
         if (this.esComputadora[indice]) {
             this.dormir(600);
         } else {
@@ -218,24 +210,37 @@ public class PantallaTablero extends Pantalla {
             this.semaforoLanzamiento.acquire(); 
         }
 
-        this.lanzarDados(panel);
-        this.dormir(350);
-        int suma = panel.getDado1() + panel.getDado2();
-
-        int casillaMeta = Math.min(Casillas.TOTAL, panel.getPosicion() + suma);
-        while (panel.getPosicion() < casillaMeta) {
+        controlador.lanzarDados();
+        this.lanzarDados(panel, controlador.getDado1(), controlador.getDado2());
+        controlador.avanzarJugador();
+        int casillaTrasDados = controlador.getCasillaTrasDados();
+        while (panel.getPosicion() < casillaTrasDados) {
             this.moverFicha(panel, panel.getPosicion() + 1, 8, 18, 16);
         }
-        if (panel.getPosicion() >= Casillas.TOTAL) {
+        if (!controlador.isJuegoTerminado()) {
+            controlador.aplicarCasilla();
+        }
+
+        int casillaFinalTurno = controlador.getCasillaFinalTurno();
+        String mensajeCasilla = controlador.getMensajeCasilla();
+        if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
+            boolean esEscalera = this.esEscalera(casillaTrasDados);
+            String titulo = esEscalera ? "¡PODER DE ESCALERA!" : "¡PODER DE SERPIENTE!";
+            Color color = esEscalera ? Recursos.DORADO : new Color(0xE35D4B);
+            this.mostrarAviso(2600, titulo, 32, color, this.nombrePoder(casillaTrasDados), 24, Recursos.CREMA);
+        }
+        if (panel.getPosicion() != casillaFinalTurno) {
+            this.moverFicha(panel, casillaFinalTurno, 36, 16, 0);
+        }
+
+        if (controlador.isJuegoTerminado()) {
             this.ganar(panel);
             return false;
         }
 
-        this.revisarEscaleraOSerpiente(panel);
-
-
+        controlador.pasarTurno();
         panel.setEsTurno(false);
-        this.turnoActual = (indice + 1) % this.cantidadJugadores;
+        this.turnoActual = controlador.getIndiceTurno();
         if (this.ventana != null && this.ventana.isGuardadoAutomatico()) {
             this.ventana.guardarPartida();
         }
@@ -243,7 +248,7 @@ public class PantallaTablero extends Pantalla {
     }
 
     void pasarTurno(int indice) {
-        int siguiente = (indice + 1) % this.hilosJugadores.length;
+        int siguiente = this.ventana.getControlador().getIndiceTurno();
         this.hilosJugadores[siguiente].darTurno();
     }
 
@@ -253,13 +258,14 @@ public class PantallaTablero extends Pantalla {
         }
     }
 
-    private void lanzarDados(PanelJugador panel) throws InterruptedException {
+    private void lanzarDados(PanelJugador panel, int dado1, int dado2) throws InterruptedException {
         for (int cuadro = 0; cuadro < 16; cuadro++) {
             double giro = (this.azar.nextDouble() - 0.5) * 0.6;
             panel.setDados(1 + this.azar.nextInt(6), 1 + this.azar.nextInt(6));
             panel.setLanzando(true, giro);
             this.dormir(70);
         }
+        panel.setDados(dado1, dado2);
         panel.setLanzando(false, 0);
     }
 
@@ -286,30 +292,31 @@ public class PantallaTablero extends Pantalla {
         this.repaint();
     }
 
-    private void revisarEscaleraOSerpiente(PanelJugador panel) throws InterruptedException {
-        int casillaActual = panel.getPosicion();
-        int casillaDestino = Casillas.destino(casillaActual);
-        if (casillaDestino == casillaActual) {
-            return; 
+    private boolean esEscalera(int casilla) {
+        for (Escalera escalera : this.ventana.getControlador().getTablero().getEscaleras()) {
+            if (escalera.getBase() == casilla) {
+                return true;
+            }
         }
-        boolean esEscalera = Casillas.esEscalera(casillaActual);
-        String titulo = "¡SERPIENTE!";
-        String verbo = "Bajas";
-        Color color = new Color(0xE35D4B);
-        if (esEscalera) {
-            titulo = "¡ESCALERA!";
-            verbo = "Subes";
-            color = Recursos.DORADO;
+        return false;
+    }
+
+    private String nombrePoder(int casilla) {
+        for (Escalera escalera : this.ventana.getControlador().getTablero().getEscaleras()) {
+            if (escalera.getBase() == casilla) {
+                return escalera.getNombrePoder();
+            }
         }
-        this.dormir(250);
-        this.mostrarAviso(1100, titulo, 44, color, verbo + " de la " + casillaActual + " a la " + casillaDestino, 28,
-                Recursos.CREMA);
-        this.moverFicha(panel, casillaDestino, 36, 22, 0);
-        this.dormir(300);
+        for (Serpiente serpiente : this.ventana.getControlador().getTablero().getSerpientes()) {
+            if (serpiente.getCabeza() == casilla) {
+                return serpiente.getNombrePoder();
+            }
+        }
+        throw new IllegalStateException("No se encontró el poder de la casilla " + casilla);
     }
 
     private void ganar(PanelJugador panel) throws InterruptedException {
-        this.guardarRegistroDeLaPartida();
+        this.ventana.getControlador().terminarPartida();
         this.mostrarAviso(1500, "¡LLEGÓ A LA META!", 40, Recursos.DORADO, panel.getNombre(), 56,
                 panel.getColorDelJugador());
         final String nombreGanador = panel.getNombre();
@@ -337,25 +344,6 @@ public class PantallaTablero extends Pantalla {
         }
     }
 
-    private void guardarRegistroDeLaPartida() {
-        ArrayList<ResultadoJugador> resultados = new ArrayList<>();
-        for (int i = 0; i < this.cantidadJugadores; i++) {
-            PanelJugador panel = this.paneles[i];
-            resultados.add(new ResultadoJugador(panel.getNombre(), this.jugadas[i], panel.getPosicion()));
-        }
-        String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        RegistroPartida registro = new RegistroPartida(fecha, resultados, this.textosDeSaltos(Casillas.ESCALERAS),
-                this.textosDeSaltos(Casillas.SERPIENTES));
-        new RegistroPartidasRepository().guardarRegistro(registro);
-    }
-    
-    private ArrayList<String> textosDeSaltos(int[][] saltos) {
-    ArrayList<String> textos = new ArrayList<>();
-    for (int[] salto : saltos) {
-        textos.add("De la " + salto[0] + " a la " + salto[1]);
-    }
-    return textos;
-}
     private void iluminarCasilla(int numero) {
         SwingUtilities.invokeLater(() -> {
             if (this.casillaIluminada != null) {
@@ -389,7 +377,11 @@ public class PantallaTablero extends Pantalla {
     @Override
     protected void dibujar(Graphics2D g) {
         g.drawImage(Recursos.imagen("tableros/" + this.temaActual + ".png"), Casillas.TABLERO_X, Casillas.TABLERO_Y, null);
+        java.util.List<Escalera> escaleras = this.ventana.getControlador().getTablero().getEscaleras();
         for (int i = 0; i < POSICION_ESCALERAS.length; i++) {
+            if (i < escaleras.size() && escaleras.get(i).isUsada()) {
+                continue;
+            }
             BufferedImage escalera = Recursos.imagen("escaleras/escalera_" + (i + 1) + ".png");
             g.drawImage(escalera, POSICION_ESCALERAS[i][0], POSICION_ESCALERAS[i][1], null);
         }

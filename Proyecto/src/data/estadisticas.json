@@ -11,6 +11,30 @@
       "partidasJugadas": 1,
       "partidasGanadas": 0,
       "casillaMasAlta": 56
+    },
+    {
+      "nombre": "hjnyh",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 59
+    },
+    {
+      "nombre": "BOT 1",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 62
+    },
+    {
+      "nombre": "BOT 2",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 28
+    },
+    {
+      "nombre": "BOT 3",
+      "partidasJugadas": 1,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
     }
   ]
 }

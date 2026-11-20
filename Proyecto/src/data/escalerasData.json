@@ -1,23 +1,23 @@
 {
   "lista": [
     {
-      "base": 4,
-      "cima": 14,
-      "poder": 1
+      "base": 44,
+      "cima": 83,
+      "poder": 4
     },
     {
-      "base": 9,
-      "cima": 31,
-      "poder": 3
+      "base": 3,
+      "cima": 24,
+      "poder": 4
     },
     {
-      "base": 20,
-      "cima": 38,
-      "poder": 3
+      "base": 14,
+      "cima": 48,
+      "poder": 4
     },
     {
-      "base": 28,
-      "cima": 84,
+      "base": 72,
+      "cima": 89,
       "poder": 4
     }
   ]

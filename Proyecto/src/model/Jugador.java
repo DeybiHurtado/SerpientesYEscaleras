@@ -13,6 +13,7 @@ public class Jugador {
     private boolean tieneTurnoExtra = false;
     private int casillaMaxima = 1;
     private boolean esConsola = false;
+    private int jugadas = 0;
 
     public Jugador(String nombre) {
         this.id = contadorId++;
@@ -20,7 +21,6 @@ public class Jugador {
         this.posicion = 1;
         this.puntaje = 0;
     }
-
     public Jugador(String nombre, boolean esConsola) {
         this(nombre);
         this.esConsola = esConsola;
@@ -36,6 +36,14 @@ public class Jugador {
 
     public int getCasillaMaxima() {
         return Math.max(casillaMaxima, posicion);
+    }
+
+    public int getJugadas() {
+        return jugadas;
+    }
+
+    public void sumarJugada() {
+        this.jugadas++;
     }
 
     public int getId() {

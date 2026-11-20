@@ -33,16 +33,17 @@ public class Tablero {
         this.serpientes = new ArrayList<>(serpientes);
         this.escaleras = new ArrayList<>(escaleras);
     }
-    private void inicializarTablero() {
-        escaleras.add(new Escalera(4, 14, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(9, 31, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(20, 38, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(28, 84, (int) (Math.random() * 4) + 1));
 
-        serpientes.add(new Serpiente(17, 7, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(54, 34, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(62, 19, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(98, 79, (int) (Math.random() * 4) + 1));
+    private void inicializarTablero() {
+        escaleras.add(new Escalera(44,83, (int) (Math.random() * 4) + 1));
+        escaleras.add(new Escalera(3, 24, (int) (Math.random() * 4) + 1));
+        escaleras.add(new Escalera(14, 48, (int) (Math.random() * 4) + 1));
+        escaleras.add(new Escalera(72, 89, (int) (Math.random() * 4) + 1));
+
+        serpientes.add(new Serpiente(58,22, (int) (Math.random() * 4) + 1));
+        serpientes.add(new Serpiente(94, 55, (int) (Math.random() * 4) + 1));
+        serpientes.add(new Serpiente(26, 7, (int) (Math.random() * 4) + 1));
+        serpientes.add(new Serpiente(52, 32, (int) (Math.random() * 4) + 1));
     }
 
     public String evaluarCasillaConPoderes(int posicionActual, Jugador jugador, Dados dados) {

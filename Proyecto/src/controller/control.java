@@ -139,4 +139,113 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
         }
         return false;
     }
+
+    // La parte grafica, las ventanas llamas a estos metodos y el controlador le pide todo al modelo para que la vista no toque el modelo
+    // muestra un mensaje de error si el nombre esta mal o esta vacio 
+    public String validarNombre(String nombre, ArrayList<String> yaUsados) {
+        if (nombre.isEmpty()) {
+            return "El nombre no puede estar vacío.";
+        }
+        if (nombre.toLowerCase().startsWith("consola")) {
+            return "Ese nombre está reservado para la computadora.";
+        }
+        if (this.contieneIgnorandoMayusculas(yaUsados, nombre)) {
+            return "Ese nombre ya está en uso en esta partida.";
+        }
+        return "";
+    }
+
+    public void iniciarPartidaIndividual(String nombre, int cantidadRivales) {
+        this.juego.iniciarPartidaContraConsola(nombre, cantidadRivales);
+    }
+
+    public void iniciarPartidaMultijugador(ArrayList<String> nombres) {
+        this.juego.iniciarPartidaMultijugador(nombres);
+    }
+
+    public void reiniciarPartida() {
+        this.juego.reiniciarPartida();
+    }
+
+    public void guardarPartida() {
+        this.juego.guardarPartida();
+    }
+
+    public void terminarPartida() {
+        this.juego.terminarPartida();
+    }
+
+    // El turno, paso a paso
+    public boolean empezarTurno() {
+        return this.juego.empezarTurno();
+    }
+
+    public int lanzarDados() {
+        return this.juego.lanzarDados();
+    }
+
+    public void avanzarJugador() {
+        this.juego.avanzarJugador();
+    }
+
+    public void aplicarCasilla() {
+        this.juego.aplicarCasilla();
+    }
+
+    public void pasarTurno() {
+        this.juego.pasarTurno();
+    }
+
+    // Lo que la vista necesita para dibujar
+    public ArrayList<Jugador> getJugadores() {
+        return this.juego.getJugadoresActuales();
+    }
+
+    public int getIndiceTurno() {
+        return this.juego.getIndiceTurnoActual();
+    }
+
+    public int getDado1() {
+        return this.juego.getDado1();
+    }
+
+    public int getDado2() {
+        return this.juego.getDado2();
+    }
+
+    public int getAvance() {
+        return this.juego.getAvance();
+    }
+
+    public int getCasillaTrasDados() {
+        return this.juego.getCasillaTrasDados();
+    }
+
+    public int getCasillaFinalTurno() {
+        return this.juego.getCasillaFinalTurno();
+    }
+
+    public boolean huboSalto() {
+        return this.juego.huboSalto();
+    }
+
+    public String getMensajeTurno() {
+        return this.juego.getMensajeTurno();
+    }
+
+    public String getMensajeCasilla() {
+        return this.juego.getMensajeCasilla();
+    }
+
+    public boolean isJuegoTerminado() {
+        return this.juego.isJuegoTerminado();
+    }
+
+    public Jugador getGanador() {
+        return this.juego.getGanador();
+    }
+
+    public Tablero getTablero() {
+        return this.juego.getTablero();
+    }
 }

@@ -10,9 +10,10 @@ import javax.swing.Timer;
 public class PantallaCarga extends Pantalla {
 
     private static final String[] CONSEJOS = {
-            "Cada turno lanzas dos dados y avanzas la suma. ¡El 7 es la suma más frecuente!",
+            "Lanzas dos dados; a menos de 6 casillas de la meta, solo uno. ¡El 7 es la suma más frecuente!",
             "Las escaleras te hacen subir y las serpientes te hacen bajar: mira bien el tablero antes de tirar.",
-            "Gana quien llega primero a la casilla 100.",
+            "Debes caer exactamente en 100; si te pasas, retrocedes la diferencia.",
+            "Cuando te faltan menos de 6 casillas para la meta, lanzas un solo dado.",
             "Si una serpiente te muerde, no te desanimes: ¡todavía puedes remontar!",
             "Activa el guardado automático en Ajustes para no perder tu partida.",
             "Pulsa la casita durante la partida para guardarla y volver al menú.",

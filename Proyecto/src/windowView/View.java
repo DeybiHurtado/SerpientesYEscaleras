@@ -199,8 +199,8 @@ public void mostrarGanador(String nombreGanador) {
 
     public void mostrarInfo() {
         System.out.println("\n=========== INFO ===========");
-        System.out.println("OBJETIVO: llegar primero a la casilla 100.");
-        System.out.println("Cada turno se lanzan dos dados y avanzas la suma.");
+        System.out.println("OBJETIVO: llegar primero a la casilla 100 exactamente; si te pasas, retrocedes la diferencia.");
+        System.out.println("Cada turno se lanzan dos dados y avanzas la suma; si faltan menos de 6 casillas, lanzas un solo dado.");
         System.out.println("Si caes en la base de una escalera subes; si caes en la cabeza de una serpiente bajas.");
         System.out.println("\nPODERES DE LAS ESCALERAS");
         System.out.println("  Normal        : subes a la cima.");

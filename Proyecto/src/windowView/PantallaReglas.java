@@ -14,8 +14,8 @@ public class PantallaReglas extends Pantalla {
     private static final Color COLOR_SERPIENTES = new Color(0xE35D4B);
 
     private static final String[][] TARJETAS_BASICAS = {
-            { "Objetivo", "Llegar primero a la casilla 100." },
-            { "Tu turno", "Avanzas la suma de dos dados. Un par da otro turno; un par en ese turno no da otro." },
+            { "Objetivo", "Debes caer exactamente en 100; si te pasas, retrocedes la diferencia." },
+            { "Tu turno", "Dos dados; a menos de 6 casillas, uno. Un par da otro turno (no se encadena)." },
             { "Casillas especiales",
                     "Si caes en la base de una escalera subes; si caes en la cabeza de una serpiente bajas." } };
 

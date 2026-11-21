@@ -235,7 +235,9 @@ public class PanelJugador extends JPanel {
             giro = this.giroDeLosDados;
         }
         this.dibujarUnDado(g, primero, this.dado1, giro);
-        this.dibujarUnDado(g, segundo, this.dado2, -giro);
+        if (this.dado2 > 0) {
+            this.dibujarUnDado(g, segundo, this.dado2, -giro);
+        }
     }
 
     /** Un dado: cuadrado beige con sus puntos negros. rectangulo = { x, y, ancho, alto }. */

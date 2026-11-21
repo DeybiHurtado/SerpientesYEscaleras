@@ -20,6 +20,12 @@ public class Dados {
         return resultadoDado1 + resultadoDado2;
     }
 
+    public int lanzarUnDado() {
+        this.resultadoDado1 = dado1.lanzarDado();
+        this.resultadoDado2 = 0;
+        return this.resultadoDado1;
+    }
+
     public int getResultadoDado1(){
         return resultadoDado1;
     }

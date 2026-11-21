@@ -240,10 +240,15 @@ public boolean hayPartidaGuardada() {
     //-> 2) Lanza los dados y devuelve cuantas casillas avanza (si el jugador tiene veneno lo reduce)
     public int lanzarDados() {
         Jugador jugadorActual = this.getJugadorActual();
-        int tiro = this.dados.lanzarDado();
+        boolean usaUnDado = this.tablero.getCasillaFinal() - jugadorActual.getPosicion() < 6;
+        int tiro = usaUnDado ? this.dados.lanzarUnDado() : this.dados.lanzarDado();
         this.dado1 = this.dados.getResultadoDado1();
         this.dado2 = this.dados.getResultadoDado2();
         this.avance = tiro;
+
+        if (usaUnDado) {
+            this.mensajeTurno += "Te faltan menos de 6 casillas: lanzas un solo dado. ";
+        }
 
         if (jugadorActual.getNivelVeneno() == 1) {
             this.avance = tiro / 2;
@@ -264,7 +269,7 @@ public boolean hayPartidaGuardada() {
         Jugador jugadorActual = this.getJugadorActual();
         int nuevaPosicion = jugadorActual.getPosicion() + this.avance;
 
-        if (nuevaPosicion >= this.tablero.getCasillaFinal()) {
+        if (nuevaPosicion == this.tablero.getCasillaFinal()) {
             jugadorActual.setPosicion(this.tablero.getCasillaFinal());
             this.casillaTrasDados = this.tablero.getCasillaFinal();
             this.casillaFinalTurno = this.tablero.getCasillaFinal();
@@ -272,6 +277,11 @@ public boolean hayPartidaGuardada() {
             this.ganador = jugadorActual;
             this.mensajeTurno += "¡" + jugadorActual.getNombre() + " ha llegado a 100 y ha ganado el juego!";
         } else {
+            if (nuevaPosicion > this.tablero.getCasillaFinal()) {
+                int exceso = nuevaPosicion - this.tablero.getCasillaFinal();
+                nuevaPosicion = this.tablero.getCasillaFinal() - exceso;
+                this.mensajeTurno += "Te pasaste por " + exceso + " casillas y retrocedes " + exceso + ". ";
+            }
             jugadorActual.setPosicion(nuevaPosicion);
             this.casillaTrasDados = nuevaPosicion;
             this.casillaFinalTurno = nuevaPosicion;

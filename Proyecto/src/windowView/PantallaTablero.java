@@ -216,8 +216,18 @@ public class PantallaTablero extends Pantalla {
         this.lanzarDados(panel, controlador.getDado1(), controlador.getDado2());
         controlador.avanzarJugador();
         int casillaTrasDados = controlador.getCasillaTrasDados();
-        while (panel.getPosicion() < casillaTrasDados) {
-            this.moverFicha(panel, panel.getPosicion() + 1, 8, 18, 16);
+        if (casillaTrasDados < panel.getPosicion()) {
+            int casillaFinal = controlador.getTablero().getCasillaFinal();
+            while (panel.getPosicion() < casillaFinal) {
+                this.moverFicha(panel, panel.getPosicion() + 1, 8, 18, 16);
+            }
+            while (panel.getPosicion() > casillaTrasDados) {
+                this.moverFicha(panel, panel.getPosicion() - 1, 8, 18, 16);
+            }
+        } else {
+            while (panel.getPosicion() < casillaTrasDados) {
+                this.moverFicha(panel, panel.getPosicion() + 1, 8, 18, 16);
+            }
         }
         controlador.aplicarCasilla();
         panel.setNivelVeneno(controlador.getNivelVenenoJugador(indice));
@@ -263,7 +273,8 @@ public class PantallaTablero extends Pantalla {
     private void lanzarDados(PanelJugador panel, int dado1, int dado2) throws InterruptedException {
         for (int cuadro = 0; cuadro < 16; cuadro++) {
             double giro = (this.azar.nextDouble() - 0.5) * 0.6;
-            panel.setDados(1 + this.azar.nextInt(6), 1 + this.azar.nextInt(6));
+            int segundoDado = dado2 > 0 ? 1 + this.azar.nextInt(6) : 0;
+            panel.setDados(1 + this.azar.nextInt(6), segundoDado);
             panel.setLanzando(true, giro);
             this.dormir(70);
         }

@@ -112,30 +112,24 @@ public class VentanaGrafica extends JFrame {
         }
     }
 
-     public void prepararPartida(DatosPartida datos) {
-        this.iniciarModelo(datos);
-        this.partidaActual = datos;
-        this.mostrar("carga");
-        this.pantallaCarga.iniciar(datos);
+    public void prepararPartidaIndividual(String nombre, int cantidadRivales) {
+        this.controlador.iniciarPartidaIndividual(nombre, cantidadRivales);
+        this.mostrarCargaDePartida();
     }
 
-    private void iniciarModelo(DatosPartida datos) {
-        boolean esIndividual = datos.getCantidad() > 1 && datos.esComputadora(1);
-        if (esIndividual) {
-            this.controlador.iniciarPartidaIndividual(datos.getNombre(0), datos.getCantidad() - 1);
-            return;
-        }
-        ArrayList<String> nombres = new ArrayList<>();
-        for (int i = 0; i < datos.getCantidad(); i++) {
-            nombres.add(datos.getNombre(i));
-        }
-        this.controlador.iniciarPartidaMultijugador(nombres);
+    public void prepararPartidaMultijugador(String[] nombres, boolean[] jugadoresActivos) {
+        this.controlador.iniciarPartidaMultijugador(nombres, jugadoresActivos);
+        this.mostrarCargaDePartida();
     }
 
     public void continuarPartida() {
         if (!this.controlador.continuarPartidaGuardada()) {
             return;
         }
+        this.mostrarCargaDePartida();
+    }
+
+    private void mostrarCargaDePartida() {
         ArrayList<Jugador> jugadores = this.controlador.getJugadores();
         String[] nombres = new String[jugadores.size()];
         boolean[] sonComputadora = new boolean[jugadores.size()];

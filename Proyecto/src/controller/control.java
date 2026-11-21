@@ -1,13 +1,14 @@
 package controller;
 
+import java.util.ArrayList;
 
-import model.Jugador;
 import model.Juego;
-import model.RegistroPartida;
 import model.PartidaGuardada;
+import model.RegistroPartida;
+import model.ResumenHistorialPartidas;
+import model.Jugador;
 import model.Tablero;
 import windowView.View;
-import java.util.ArrayList;
 
 public class control {
     private View view;
@@ -156,11 +157,35 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
     }
 
     public void iniciarPartidaIndividual(String nombre, int cantidadRivales) {
-        this.juego.iniciarPartidaContraConsola(nombre, cantidadRivales);
+        if (cantidadRivales < 1 || cantidadRivales > 3) {
+            throw new IllegalArgumentException("La cantidad de rivales debe estar entre 1 y 3.");
+        }
+        String nombreJugador = nombre == null ? "" : nombre.trim();
+        if (nombreJugador.isEmpty()) {
+            nombreJugador = "Jugador 1";
+        }
+        this.juego.iniciarPartidaContraConsola(nombreJugador, cantidadRivales);
     }
 
     public void iniciarPartidaMultijugador(ArrayList<String> nombres) {
         this.juego.iniciarPartidaMultijugador(nombres);
+    }
+
+    public void iniciarPartidaMultijugador(String[] nombres, boolean[] jugadoresActivos) {
+        if (nombres == null || jugadoresActivos == null || nombres.length != jugadoresActivos.length) {
+            throw new IllegalArgumentException("Los nombres y jugadores activos deben tener el mismo tamaño.");
+        }
+        ArrayList<String> participantes = new ArrayList<>();
+        for (int i = 0; i < nombres.length; i++) {
+            if (jugadoresActivos[i]) {
+                String nombre = nombres[i] == null ? "" : nombres[i].trim();
+                participantes.add(nombre.isEmpty() ? "Jugador " + (i + 1) : nombre);
+            }
+        }
+        if (participantes.size() < 2 || participantes.size() > 4) {
+            throw new IllegalArgumentException("El modo multijugador requiere de 2 a 4 jugadores.");
+        }
+        this.juego.iniciarPartidaMultijugador(participantes);
     }
 
     public boolean continuarPartidaGuardada() {
@@ -173,6 +198,10 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
 
     public ArrayList<RegistroPartida> getRegistrosPartidas() {
         return this.juego.getRegistroPartidasRepo().getTodas();
+    }
+
+    public ResumenHistorialPartidas getResumenHistorialPartidas(String filtro, int cantidadMaxima) {
+        return new ResumenHistorialPartidas(this.getRegistrosPartidas(), filtro, cantidadMaxima);
     }
 
     public void reiniciarPartida() {
@@ -247,6 +276,18 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
 
     public String getMensajeCasilla() {
         return this.juego.getMensajeCasilla();
+    }
+
+    public int getNivelVenenoJugador(int indice) {
+        return this.juego.getJugadoresActuales().get(indice).getNivelVeneno();
+    }
+
+    public boolean esEscalera(int casilla) {
+        return this.juego.getTablero().esEscalera(casilla);
+    }
+
+    public String getNombrePoder(int casilla) {
+        return this.juego.getTablero().getNombrePoder(casilla);
     }
 
     public boolean isJuegoTerminado() {

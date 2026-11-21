@@ -46,11 +46,11 @@ public class CasillaBoton extends JComponent {
     protected void paintComponent(Graphics graficos) {
         Graphics2D g = (Graphics2D) graficos.create();
         if (this.iluminada) {
-            g.setColor(new Color(245, 197, 24, 110));
+            g.setColor(new Color(220, 190, 75, 70));
             g.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
         if (this.mouseEncima) {
-            g.setColor(new Color(245, 197, 24, 200));
+            g.setColor(new Color(220, 190, 75, 150));
             g.setStroke(new BasicStroke(2f));
             g.drawRect(2, 2, this.getWidth() - 5, this.getHeight() - 5);
         }

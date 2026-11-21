@@ -42,19 +42,7 @@ public class PantallaIndividual extends Pantalla {
     }
 
     private void comenzar() {
-        String nombre = this.campoNombre.getText().trim();
-        if (nombre.isEmpty()) {
-            nombre = "Jugador 1";
-        }
-        int total = 1 + this.cantidadRivales;
-        String[] nombres = new String[total];
-        boolean[] sonComputadora = new boolean[total];
-        nombres[0] = nombre;
-        for (int i = 1; i < total; i++) {
-            nombres[i] = "BOT" + i;
-            sonComputadora[i] = true;
-        }
-        this.ventana.prepararPartida(new DatosPartida(nombres, sonComputadora));
+        this.ventana.prepararPartidaIndividual(this.campoNombre.getText(), this.cantidadRivales);
     }
 
     @Override

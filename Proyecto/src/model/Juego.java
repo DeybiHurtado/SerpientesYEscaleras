@@ -24,6 +24,7 @@ public class Juego {
     private Jugador ganador;
     private int turnos;
     private boolean vieneDeGuardada;
+    private boolean turnoExtraPorParEnCurso;
 
     // Datos del turno que se está jugando (la vista los lee para dibujar lo mismo que pasó en el modelo)
      private int dado1;
@@ -104,6 +105,7 @@ public class Juego {
         this.dados = new Dados();
         this.indiceTurnoActual = partida.getIndiceTurnoActual();
         this.turnos = partida.getTurnos();
+        this.turnoExtraPorParEnCurso = partida.isTurnoExtraPorParEnCurso();
         this.juegoTerminado = false;
         this.ganador = null;
         this.vieneDeGuardada = true;
@@ -117,6 +119,7 @@ public class Juego {
         this.turnos = 0;
         this.juegoTerminado = false;
         this.ganador = null;
+        this.turnoExtraPorParEnCurso = false;
     }
     
  public Jugador registerJugador (String jugador){
@@ -145,7 +148,7 @@ public boolean hayPartidaGuardada() {
                 new ArrayList<>(jugadoresActuales),
                 new ArrayList<>(tablero.getSerpientes()),
                 new ArrayList<>(tablero.getEscaleras()),
-                this.indiceTurnoActual, this.turnos);
+                this.indiceTurnoActual, this.turnos, this.turnoExtraPorParEnCurso);
     }
 
     public void guardarPartida() {
@@ -193,13 +196,17 @@ public boolean hayPartidaGuardada() {
         for (Jugador jugador : this.jugadoresActuales) {
             resultados.add(new ResultadoJugador(jugador.getNombre(), jugador.getJugadas(), jugador.getPosicion()));
         }
+        ArrayList<Escalera> escaleras = new ArrayList<>(this.tablero.getEscaleras());
+        escaleras.sort((a, b) -> Integer.compare(a.getBase(), b.getBase()));
         ArrayList<String> textosEscaleras = new ArrayList<>();
-        for (Escalera escalera : this.tablero.getEscaleras()) {
-            textosEscaleras.add("De la " + escalera.getBase() + " a la " + escalera.getCima());
+        for (int i = 0; i < escaleras.size(); i++) {
+            textosEscaleras.add((i + 1) + ". " + escaleras.get(i).getNombrePoder());
         }
+        ArrayList<Serpiente> serpientes = new ArrayList<>(this.tablero.getSerpientes());
+        serpientes.sort((a, b) -> Integer.compare(a.getCabeza(), b.getCabeza()));
         ArrayList<String> textosSerpientes = new ArrayList<>();
-        for (Serpiente serpiente : this.tablero.getSerpientes()) {
-            textosSerpientes.add("De la " + serpiente.getCabeza() + " a la " + serpiente.getCola());
+        for (int i = 0; i < serpientes.size(); i++) {
+            textosSerpientes.add((i + 1) + ". " + serpientes.get(i).getNombrePoder());
         }
         return new RegistroPartida(fecha, resultados, textosEscaleras, textosSerpientes);
     }
@@ -219,6 +226,7 @@ public boolean hayPartidaGuardada() {
             this.mensajeTurno = "Turno de " + jugadorActual.getNombre()
                     + ": Pierde este turno por efecto anterior.";
             jugadorActual.setPierdeTurno(false);
+            this.turnoExtraPorParEnCurso = false;
             this.indiceTurnoActual = (this.indiceTurnoActual + 1) % this.jugadoresActuales.size();
             return false;
         }
@@ -296,10 +304,21 @@ public boolean hayPartidaGuardada() {
 
     public void pasarTurno() {
         Jugador jugadorActual = this.getJugadorActual();
-        if (jugadorActual.isTieneTurnoExtra()) {
-            jugadorActual.setTieneTurnoExtra(false);
-            this.mensajeTurno += " ¡Obtienes un turno extra!";
+        boolean turnoExtraPorPoder = jugadorActual.isTieneTurnoExtra();
+        jugadorActual.setTieneTurnoExtra(false);
+        boolean turnoExtraPorPar = this.dado1 == this.dado2 && !this.turnoExtraPorParEnCurso;
+        this.turnoExtraPorParEnCurso = turnoExtraPorPar
+                || (this.turnoExtraPorParEnCurso && turnoExtraPorPoder);
+
+        if (turnoExtraPorPar) {
+            this.mensajeTurno += " ¡Sacaste un par y tienes un turno extra!";
+        }
+        if (turnoExtraPorPoder || turnoExtraPorPar) {
+            if (turnoExtraPorPoder) {
+                this.mensajeTurno += " ¡Obtienes un turno extra!";
+            }
         } else {
+            this.turnoExtraPorParEnCurso = false;
             this.indiceTurnoActual = (this.indiceTurnoActual + 1) % this.jugadoresActuales.size();
         }
     }

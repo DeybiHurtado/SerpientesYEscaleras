@@ -58,26 +58,11 @@ public class PantallaJugadores extends Pantalla {
     }
 
     private void comenzar() {
-        int total = 0;
-        for (boolean activo : this.jugadorActivo) {
-            if (activo) {
-                total++;
-            }
+        String[] nombres = new String[this.camposDeNombre.length];
+        for (int i = 0; i < nombres.length; i++) {
+            nombres[i] = this.camposDeNombre[i].getText();
         }
-        String[] nombres = new String[total];
-        boolean[] sonComputadora = new boolean[total];
-        int posicion = 0;
-        for (int i = 0; i < 4; i++) {
-            if (this.jugadorActivo[i]) {
-                String nombre = this.camposDeNombre[i].getText().trim();
-                if (nombre.isEmpty()) {
-                    nombre = "Jugador " + (i + 1);
-                }
-                nombres[posicion] = nombre;
-                posicion++;
-            }
-        }
-        this.ventana.prepararPartida(new DatosPartida(nombres, sonComputadora));
+        this.ventana.prepararPartidaMultijugador(nombres, this.jugadorActivo);
     }
 
     @Override

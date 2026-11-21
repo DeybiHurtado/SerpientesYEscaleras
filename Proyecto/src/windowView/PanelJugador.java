@@ -30,6 +30,10 @@ public class PanelJugador extends JPanel {
     private static final int[][] HUECO_DE_AYUDA = { { 125, 80 }, { 71, 76 }, { 130, 77 }, { 72, 66 } };
     private static final boolean[] BARRA_ABAJO = { false, true, true, false };
     private static final int ALTO_BARRA = 66;
+    private static final Color COLOR_DADO = new Color(180, 168, 144);
+    private static final Color COLOR_BORDE_DADO = new Color(120, 108, 86);
+    private static final Color COLOR_VENENO = new Color(132, 72, 174);
+    private static final Color COLOR_BORDE_VENENO = new Color(82, 43, 111);
 
     private final int indiceColor;
     private final BufferedImage imagenPanel;
@@ -39,6 +43,7 @@ public class PanelJugador extends JPanel {
     private volatile int posicion;
     private volatile int dado1 = 1;
     private volatile int dado2 = 1;
+    private volatile float intensidadVeneno;
     private volatile boolean lanzando;
     private volatile double giroDeLosDados;
     private volatile boolean esTurno;
@@ -86,6 +91,15 @@ public class PanelJugador extends JPanel {
     public void setDados(int dado1, int dado2) {
         this.dado1 = dado1;
         this.dado2 = dado2;
+        this.repaint();
+    }
+
+    public void setNivelVeneno(int nivelVeneno) {
+        this.intensidadVeneno = switch (nivelVeneno) {
+            case 1 -> 0.8f;
+            case 2 -> 0.35f;
+            default -> 0;
+        };
         this.repaint();
     }
 
@@ -233,9 +247,9 @@ public class PanelJugador extends JPanel {
         Graphics2D d = (Graphics2D) g.create();
         d.rotate(giro, x + ancho / 2.0, y + alto / 2.0);
 
-        d.setColor(new Color(180, 168, 144));
+        d.setColor(mezclar(COLOR_DADO, COLOR_VENENO, this.intensidadVeneno));
         d.fillRoundRect(x, y, ancho, alto, 10, 10);
-        d.setColor(new Color(120, 108, 86));
+        d.setColor(mezclar(COLOR_BORDE_DADO, COLOR_BORDE_VENENO, this.intensidadVeneno));
         d.setStroke(new BasicStroke(2.5f));
         d.drawRoundRect(x + 1, y + 1, ancho - 2, alto - 2, 10, 10);
 
@@ -249,6 +263,14 @@ public class PanelJugador extends JPanel {
             d.fillOval(centroX - 5, centroY - 5, 10, 10);
         }
         d.dispose();
+    }
+
+    private Color mezclar(Color original, Color tinte, float intensidad) {
+        float factor = Math.max(0, Math.min(1, intensidad));
+        int rojo = Math.round(original.getRed() * (1 - factor) + tinte.getRed() * factor);
+        int verde = Math.round(original.getGreen() * (1 - factor) + tinte.getGreen() * factor);
+        int azul = Math.round(original.getBlue() * (1 - factor) + tinte.getBlue() * factor);
+        return new Color(rojo, verde, azul);
     }
 
     private void dibujarPosicion(Graphics2D g) {

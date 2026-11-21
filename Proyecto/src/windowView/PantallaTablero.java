@@ -11,7 +11,6 @@ import javax.swing.Timer;
 
 import model.Escalera;
 import model.Jugador;
-import model.Serpiente;
 
 public class PantallaTablero extends Pantalla {
 
@@ -56,6 +55,7 @@ public class PantallaTablero extends Pantalla {
    
         this.agregar(this.ventanaAviso, (1440 - VentanaAviso.ANCHO_DISENO) / 2, (900 - VentanaAviso.ALTO_DISENO) / 2,
                 VentanaAviso.ANCHO_DISENO, VentanaAviso.ALTO_DISENO);
+        this.setComponentZOrder(this.ventanaAviso, 0);
     }
 
     private void crearMatrizDeCasillas() {
@@ -129,6 +129,7 @@ public class PantallaTablero extends Pantalla {
         this.esComputadora[indice] = jugador.isEsConsola();
         panel.setNombre(jugador.getNombre());
         panel.setPosicion(jugador.getPosicion());
+        panel.setNivelVeneno(this.ventana.getControlador().getNivelVenenoJugador(indice));
         panel.setDados(1, 1);
         panel.setLanzando(false, 0);
         panel.setEsTurno(false);
@@ -192,6 +193,7 @@ public class PantallaTablero extends Pantalla {
         this.marcarPanelDelTurno(indice);
 
         controller.control controlador = this.ventana.getControlador();
+        panel.setNivelVeneno(controlador.getNivelVenenoJugador(indice));
         if (!controlador.empezarTurno()) {
             this.mostrarAviso(1300, "TURNO PERDIDO", 34, new Color(0xE35D4B),
                     controlador.getMensajeTurno(), 24, Recursos.CREMA);
@@ -217,17 +219,17 @@ public class PantallaTablero extends Pantalla {
         while (panel.getPosicion() < casillaTrasDados) {
             this.moverFicha(panel, panel.getPosicion() + 1, 8, 18, 16);
         }
-        if (!controlador.isJuegoTerminado()) {
-            controlador.aplicarCasilla();
-        }
+        controlador.aplicarCasilla();
+        panel.setNivelVeneno(controlador.getNivelVenenoJugador(indice));
 
         int casillaFinalTurno = controlador.getCasillaFinalTurno();
         String mensajeCasilla = controlador.getMensajeCasilla();
         if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
-            boolean esEscalera = this.esEscalera(casillaTrasDados);
+            boolean esEscalera = controlador.esEscalera(casillaTrasDados);
             String titulo = esEscalera ? "¡PODER DE ESCALERA!" : "¡PODER DE SERPIENTE!";
             Color color = esEscalera ? Recursos.DORADO : new Color(0xE35D4B);
-            this.mostrarAviso(2600, titulo, 32, color, this.nombrePoder(casillaTrasDados), 24, Recursos.CREMA);
+            this.mostrarAviso(2600, titulo, 32, color, controlador.getNombrePoder(casillaTrasDados), 24,
+                    Recursos.CREMA);
         }
         if (panel.getPosicion() != casillaFinalTurno) {
             this.moverFicha(panel, casillaFinalTurno, 36, 16, 0);
@@ -290,29 +292,6 @@ public class PantallaTablero extends Pantalla {
         panel.setPosicion(casilla); 
         this.iluminarCasilla(casilla);
         this.repaint();
-    }
-
-    private boolean esEscalera(int casilla) {
-        for (Escalera escalera : this.ventana.getControlador().getTablero().getEscaleras()) {
-            if (escalera.getBase() == casilla) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private String nombrePoder(int casilla) {
-        for (Escalera escalera : this.ventana.getControlador().getTablero().getEscaleras()) {
-            if (escalera.getBase() == casilla) {
-                return escalera.getNombrePoder();
-            }
-        }
-        for (Serpiente serpiente : this.ventana.getControlador().getTablero().getSerpientes()) {
-            if (serpiente.getCabeza() == casilla) {
-                return serpiente.getNombrePoder();
-            }
-        }
-        throw new IllegalStateException("No se encontró el poder de la casilla " + casilla);
     }
 
     private void ganar(PanelJugador panel) throws InterruptedException {

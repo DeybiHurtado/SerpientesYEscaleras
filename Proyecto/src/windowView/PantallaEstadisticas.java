@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import model.RegistroPartida;
 import model.ResultadoJugador;
+import model.ResumenHistorialPartidas;
 
 public class PantallaEstadisticas extends Pantalla {
 
@@ -20,8 +21,8 @@ public class PantallaEstadisticas extends Pantalla {
     private final String[] titulosCuadros = new String[4];
     private final String[] valoresCuadros = new String[4];
 
-    private ArrayList<RegistroPartida> todasLasPartidas = new ArrayList<>();
     private ArrayList<RegistroPartida> registros = new ArrayList<>();
+    private ResumenHistorialPartidas resumen;
     private String textoBuscado = "";
 
     protected PantallaEstadisticas(VentanaGrafica ventana) {
@@ -70,7 +71,6 @@ public class PantallaEstadisticas extends Pantalla {
 
     // Se llama cada vez que se entra a la pantalla, para leer las partidas nuevas
     public void actualizar() {
-        this.todasLasPartidas = this.ventana.getControlador().getRegistrosPartidas();
         this.buscarJugador("");
     }
 
@@ -79,22 +79,13 @@ public class PantallaEstadisticas extends Pantalla {
         this.filtrar();
     }
 
-    // Deja en la lista solo las ultimas 10 partidas del jugador buscado (o de todos si no hay busqueda)
     private void filtrar() {
         this.textoBuscado = this.campoBusqueda.getText().trim();
-        this.registros = new ArrayList<>();
-        for (RegistroPartida registro : this.todasLasPartidas) {
-            boolean coincide = this.textoBuscado.isEmpty() || registro.buscarJugador(this.textoBuscado) != null;
-            if (coincide && this.registros.size() < CANTIDAD_PARTIDAS) {
-                this.registros.add(registro);
-            }
-        }
+        this.resumen = this.ventana.getControlador()
+                .getResumenHistorialPartidas(this.textoBuscado, CANTIDAD_PARTIDAS);
+        this.registros = this.resumen.getRegistros();
         this.mostrarBotones();
-        if (this.textoBuscado.isEmpty()) {
-            this.calcularResumenGeneral();
-        } else {
-            this.calcularResumenDelJugador();
-        }
+        this.mostrarResumen();
         this.repaint();
     }
 
@@ -122,52 +113,23 @@ public class PantallaEstadisticas extends Pantalla {
                 + jugador.getJugadas() + " jugadas";
     }
 
-    private void calcularResumenGeneral() {
+    private void mostrarResumen() {
         String promedio = "-";
-        String mejor = "-";
-        String masLarga = "-";
-        if (!this.registros.isEmpty()) {
-            int suma = 0;
-            int menor = this.registros.get(0).getJugadasDelGanador();
-            int mayor = menor;
-            for (RegistroPartida registro : this.registros) {
-                int jugadas = registro.getJugadasDelGanador();
-                suma = suma + jugadas;
-                menor = Math.min(menor, jugadas);
-                mayor = Math.max(mayor, jugadas);
-            }
-            promedio = String.format("%.1f", (double) suma / this.registros.size());
-            mejor = menor + " jugadas";
-            masLarga = mayor + " jugadas";
+        String mejor = this.resumen.getMejorResultado() > 0
+                ? this.resumen.getMejorResultado() + " jugadas" : "-";
+        if (this.resumen.getCantidadPartidas() > 0) {
+            promedio = String.format("%.1f", this.resumen.getPromedioJugadas());
         }
-        this.ponerCuadros("PARTIDAS", String.valueOf(this.registros.size()), "PROMEDIO PARA GANAR", promedio,
-                "MEJOR PARTIDA", mejor, "PARTIDA MÁS LARGA", masLarga);
-    }
-
-    private void calcularResumenDelJugador() {
-        String promedio = "-";
-        String mejorVictoria = "-";
-        int ganadas = 0;
-        if (!this.registros.isEmpty()) {
-            int suma = 0;
-            int menorVictoria = 0;
-            for (RegistroPartida registro : this.registros) {
-                ResultadoJugador jugador = registro.buscarJugador(this.textoBuscado);
-                suma = suma + jugador.getJugadas();
-                if (registro.ganoElJugador(jugador)) {
-                    ganadas++;
-                    if (menorVictoria == 0 || jugador.getJugadas() < menorVictoria) {
-                        menorVictoria = jugador.getJugadas();
-                    }
-                }
-            }
-            promedio = String.format("%.1f", (double) suma / this.registros.size());
-            if (menorVictoria > 0) {
-                mejorVictoria = menorVictoria + " jugadas";
-            }
+        if (this.resumen.isFiltrado()) {
+            this.ponerCuadros("PARTIDAS JUGADAS", String.valueOf(this.resumen.getCantidadPartidas()), "VICTORIAS",
+                    String.valueOf(this.resumen.getVictorias()), "PROMEDIO DE JUGADAS", promedio, "MEJOR VICTORIA",
+                    mejor);
+            return;
         }
-        this.ponerCuadros("PARTIDAS JUGADAS", String.valueOf(this.registros.size()), "VICTORIAS",
-                String.valueOf(ganadas), "PROMEDIO DE JUGADAS", promedio, "MEJOR VICTORIA", mejorVictoria);
+        String masLarga = this.resumen.getPartidaMasLarga() > 0
+                ? this.resumen.getPartidaMasLarga() + " jugadas" : "-";
+        this.ponerCuadros("PARTIDAS", String.valueOf(this.resumen.getCantidadPartidas()), "PROMEDIO PARA GANAR",
+                promedio, "MEJOR PARTIDA", mejor, "PARTIDA MÁS LARGA", masLarga);
     }
 
     private void ponerCuadros(String titulo1, String valor1, String titulo2, String valor2, String titulo3,

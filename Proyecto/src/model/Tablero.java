@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import repository.EscalerasRepository;
 import repository.SerpientesRepository;
 
@@ -18,8 +19,12 @@ public class Tablero {
     this.escaleras = new ArrayList<>();
 
     if (serpientesRepo.hayDatos() && escalerasRepo.hayDatos()) {
-        this.serpientes.addAll(serpientesRepo.getSerpientes());
-        this.escaleras.addAll(escalerasRepo.getEscaleras());
+        for (Serpiente serpiente : serpientesRepo.getSerpientes()) {
+            this.serpientes.add(new Serpiente(serpiente.getCabeza(), serpiente.getCola(), poderAleatorio()));
+        }
+        for (Escalera escalera : escalerasRepo.getEscaleras()) {
+            this.escaleras.add(new Escalera(escalera.getBase(), escalera.getCima(), poderAleatorio()));
+        }
     } else {
         inicializarTablero();
         serpientesRepo.guardarSerpientes(this.serpientes);
@@ -35,15 +40,19 @@ public class Tablero {
     }
 
     private void inicializarTablero() {
-        escaleras.add(new Escalera(44,83, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(3, 24, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(14, 48, (int) (Math.random() * 4) + 1));
-        escaleras.add(new Escalera(72, 89, (int) (Math.random() * 4) + 1));
+        escaleras.add(new Escalera(44,83, poderAleatorio()));
+        escaleras.add(new Escalera(3, 24, poderAleatorio()));
+        escaleras.add(new Escalera(14, 48, poderAleatorio()));
+        escaleras.add(new Escalera(72, 89, poderAleatorio()));
 
-        serpientes.add(new Serpiente(58,22, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(94, 55, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(26, 7, (int) (Math.random() * 4) + 1));
-        serpientes.add(new Serpiente(52, 32, (int) (Math.random() * 4) + 1));
+        serpientes.add(new Serpiente(58,22, poderAleatorio()));
+        serpientes.add(new Serpiente(94, 55, poderAleatorio()));
+        serpientes.add(new Serpiente(26, 7, poderAleatorio()));
+        serpientes.add(new Serpiente(52, 32, poderAleatorio()));
+    }
+
+    private static int poderAleatorio() {
+        return ThreadLocalRandom.current().nextInt(1, 5);
     }
 
     public String evaluarCasillaConPoderes(int posicionActual, Jugador jugador, Dados dados) {
@@ -60,6 +69,29 @@ public class Tablero {
         }
         
         return "";
+    }
+
+    public boolean esEscalera(int casilla) {
+        for (Escalera escalera : this.escaleras) {
+            if (escalera.getBase() == casilla) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getNombrePoder(int casilla) {
+        for (Escalera escalera : this.escaleras) {
+            if (escalera.getBase() == casilla) {
+                return escalera.getNombrePoder();
+            }
+        }
+        for (Serpiente serpiente : this.serpientes) {
+            if (serpiente.getCabeza() == casilla) {
+                return serpiente.getNombrePoder();
+            }
+        }
+        throw new IllegalArgumentException("La casilla no tiene un poder: " + casilla);
     }
 
     public int getCasillaFinal() {

@@ -227,6 +227,78 @@
       "casillaMaxima": 1,
       "esConsola": false,
       "jugadas": 0
+    },
+    {
+      "id": 20,
+      "nombre": "wgee",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 21,
+      "nombre": "ge",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 22,
+      "nombre": "sd",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 23,
+      "nombre": "fnbn",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 24,
+      "nombre": "gwef",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 25,
+      "nombre": "Deybi",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
     }
   ]
 }

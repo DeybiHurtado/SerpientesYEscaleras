@@ -15,7 +15,7 @@ public class PantallaReglas extends Pantalla {
 
     private static final String[][] TARJETAS_BASICAS = {
             { "Objetivo", "Llegar primero a la casilla 100." },
-            { "Tu turno", "Cada turno se lanzan dos dados y avanzas la suma." },
+            { "Tu turno", "Avanzas la suma de dos dados. Un par da otro turno; un par en ese turno no da otro." },
             { "Casillas especiales",
                     "Si caes en la base de una escalera subes; si caes en la cabeza de una serpiente bajas." } };
 

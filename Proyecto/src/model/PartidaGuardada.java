@@ -10,8 +10,14 @@ public class PartidaGuardada {
     private ArrayList<Escalera> escaleras;
     private int indiceTurnoActual;
     private int turnos;
+    private boolean turnoExtraPorParEnCurso;
 
     public PartidaGuardada(String fechaGuardado, ArrayList<Jugador> jugadores, ArrayList<Serpiente> serpientes,ArrayList<Escalera> escaleras,int indiceTurnoActual,int turnos){
+        this(fechaGuardado, jugadores, serpientes, escaleras, indiceTurnoActual, turnos, false);
+    }
+
+    public PartidaGuardada(String fechaGuardado, ArrayList<Jugador> jugadores, ArrayList<Serpiente> serpientes,
+            ArrayList<Escalera> escaleras, int indiceTurnoActual, int turnos, boolean turnoExtraPorParEnCurso) {
 
         this.fechaGuardado = fechaGuardado;
         this.jugadores = jugadores;
@@ -19,6 +25,7 @@ public class PartidaGuardada {
         this.escaleras = escaleras;
         this.indiceTurnoActual = indiceTurnoActual;
         this.turnos = turnos;
+        this.turnoExtraPorParEnCurso = turnoExtraPorParEnCurso;
 
     }
 
@@ -44,6 +51,10 @@ public class PartidaGuardada {
 
     public int getTurnos(){
         return turnos;
+    }
+
+    public boolean isTurnoExtraPorParEnCurso() {
+        return this.turnoExtraPorParEnCurso;
     }
     
 }

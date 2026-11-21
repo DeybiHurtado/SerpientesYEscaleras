@@ -7,12 +7,13 @@ public class PantallaModo extends Pantalla {
 
     private final VentanaGrafica ventana;
     private final BotonImagen botonContinuar;
+    private final BotonImagen botonIndividual;
 
     public PantallaModo(VentanaGrafica ventana) {
         super(1000, 900, "fondos/ajustes.png");
         this.ventana = ventana;
 
-        BotonImagen botonIndividual = this.agregar(this.crearBoton("INDIVIDUAL"), 250, 300, 500, 110);
+        botonIndividual = this.agregar(this.crearBoton("INDIVIDUAL"), 250, 300, 500, 110);
         BotonImagen botonMultijugador = this.agregar(this.crearBoton("MULTIJUGADOR"), 250, 470, 500, 110);
         this.botonContinuar = this.agregar(this.crearBoton("CONTINUAR PARTIDA"), 250, 660, 500, 90);
         BotonImagen botonVolver = this.agregar(this.crearBoton("VOLVER"), 40, 790, 250, 70);
@@ -27,6 +28,9 @@ public class PantallaModo extends Pantalla {
 
     public void actualizarDisponibilidad() {
         this.botonContinuar.setVisible(this.ventana.getControlador().hayPartidaGuardada());
+        this.botonContinuar.setSeleccionado(true);
+        this.botonIndividual.setSeleccionado(false);
+        
     }
 
     private BotonImagen crearBoton(String texto) {

@@ -1,3 +1,68 @@
 {
-  "lista": []
+  "lista": [
+    {
+      "fecha": "2026-11-20 19:04",
+      "jugadores": [
+        {
+          "nombre": "mafe",
+          "jugadas": 11,
+          "casillaFinal": 56
+        },
+        {
+          "nombre": "BOT",
+          "jugadas": 12,
+          "casillaFinal": 100
+        }
+      ],
+      "escaleras": [
+        "1. Doble turno",
+        "2. Un solo uso",
+        "3. Doble turno",
+        "4. Un solo uso"
+      ],
+      "serpientes": [
+        "1. Quita turno",
+        "2. Veneno",
+        "3. Normal",
+        "4. Normal"
+      ]
+    },
+    {
+      "fecha": "2026-11-20 19:09",
+      "jugadores": [
+        {
+          "nombre": "mafe",
+          "jugadas": 11,
+          "casillaFinal": 87
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 11,
+          "casillaFinal": 22
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 11,
+          "casillaFinal": 47
+        },
+        {
+          "nombre": "BOT 3",
+          "jugadas": 10,
+          "casillaFinal": 100
+        }
+      ],
+      "escaleras": [
+        "1. Doble turno",
+        "2. Normal",
+        "3. Doble o nada",
+        "4. Un solo uso"
+      ],
+      "serpientes": [
+        "1. Veneno",
+        "2. Veneno",
+        "3. Quita turno",
+        "4. Normal"
+      ]
+    }
+  ]
 }

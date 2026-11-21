@@ -63,6 +63,33 @@
         "3. Quita turno",
         "4. Normal"
       ]
+    },
+    {
+      "fecha": "2026-11-20 19:34",
+      "jugadores": [
+        {
+          "nombre": "Deybi",
+          "jugadas": 15,
+          "casillaFinal": 100
+        },
+        {
+          "nombre": "BOT",
+          "jugadas": 18,
+          "casillaFinal": 40
+        }
+      ],
+      "escaleras": [
+        "1. Normal",
+        "2. Un solo uso",
+        "3. Doble o nada",
+        "4. Doble turno"
+      ],
+      "serpientes": [
+        "1. Veneno",
+        "2. Doble o nada",
+        "3. Veneno",
+        "4. Normal"
+      ]
     }
   ]
 }

@@ -44,6 +44,12 @@
     },
     {
       "nombre": "BOT",
+      "partidasJugadas": 2,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "Deybi",
       "partidasJugadas": 1,
       "partidasGanadas": 1,
       "casillaMasAlta": 100

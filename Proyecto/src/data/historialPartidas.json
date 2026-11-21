@@ -183,6 +183,40 @@
       "ganador": "BOT 3",
       "turnos": 44,
       "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-20 19:34",
+      "participantes": {
+        "ArrayJugadores": [
+          {
+            "id": 29,
+            "nombre": "Deybi",
+            "posicion": 100,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 100,
+            "esConsola": false,
+            "jugadas": 15
+          },
+          {
+            "id": 30,
+            "nombre": "BOT",
+            "posicion": 40,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 52,
+            "esConsola": true,
+            "jugadas": 18
+          }
+        ]
+      },
+      "ganador": "Deybi",
+      "turnos": 33,
+      "contraConsola": true
     }
   ]
 }

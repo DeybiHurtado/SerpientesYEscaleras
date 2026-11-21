@@ -299,6 +299,30 @@
       "casillaMaxima": 1,
       "esConsola": false,
       "jugadas": 0
+    },
+    {
+      "id": 26,
+      "nombre": "mafe",
+      "posicion": 56,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 56,
+      "esConsola": false,
+      "jugadas": 11
+    },
+    {
+      "id": 28,
+      "nombre": "mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
     }
   ]
 }

@@ -93,37 +93,95 @@
       "contraConsola": true
     },
     {
-      "fecha": "2026-11-20 19:03",
+      "fecha": "2026-11-20 19:04",
       "participantes": {
         "ArrayJugadores": [
           {
-            "id": 25,
-            "nombre": "Deybi",
+            "id": 26,
+            "nombre": "mafe",
+            "posicion": 56,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 56,
+            "esConsola": false,
+            "jugadas": 11
+          },
+          {
+            "id": 27,
+            "nombre": "BOT",
             "posicion": 100,
             "puntaje": 0,
             "pierdeTurno": false,
             "nivelVeneno": 0,
             "tieneTurnoExtra": false,
             "casillaMaxima": 100,
-            "esConsola": false,
-            "jugadas": 17
-          },
+            "esConsola": true,
+            "jugadas": 12
+          }
+        ]
+      },
+      "ganador": "BOT",
+      "turnos": 23,
+      "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-20 19:09",
+      "participantes": {
+        "ArrayJugadores": [
           {
-            "id": 26,
-            "nombre": "BOT",
-            "posicion": 91,
+            "id": 28,
+            "nombre": "mafe",
+            "posicion": 87,
             "puntaje": 0,
             "pierdeTurno": false,
             "nivelVeneno": 0,
             "tieneTurnoExtra": false,
-            "casillaMaxima": 91,
+            "casillaMaxima": 87,
+            "esConsola": false,
+            "jugadas": 11
+          },
+          {
+            "id": 29,
+            "nombre": "BOT 1",
+            "posicion": 22,
+            "puntaje": 0,
+            "pierdeTurno": true,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 58,
             "esConsola": true,
-            "jugadas": 14
+            "jugadas": 11
+          },
+          {
+            "id": 30,
+            "nombre": "BOT 2",
+            "posicion": 47,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 52,
+            "esConsola": true,
+            "jugadas": 11
+          },
+          {
+            "id": 31,
+            "nombre": "BOT 3",
+            "posicion": 100,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 100,
+            "esConsola": true,
+            "jugadas": 10
           }
         ]
       },
-      "ganador": "Deybi",
-      "turnos": 32,
+      "ganador": "BOT 3",
+      "turnos": 44,
       "contraConsola": true
     }
   ]

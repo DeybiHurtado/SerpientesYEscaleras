@@ -20,33 +20,33 @@
     },
     {
       "nombre": "BOT 1",
-      "partidasJugadas": 1,
+      "partidasJugadas": 2,
       "partidasGanadas": 0,
       "casillaMasAlta": 62
     },
     {
       "nombre": "BOT 2",
-      "partidasJugadas": 1,
+      "partidasJugadas": 2,
       "partidasGanadas": 0,
-      "casillaMasAlta": 28
+      "casillaMasAlta": 47
     },
     {
       "nombre": "BOT 3",
-      "partidasJugadas": 1,
-      "partidasGanadas": 1,
+      "partidasJugadas": 2,
+      "partidasGanadas": 2,
       "casillaMasAlta": 100
     },
     {
-      "nombre": "Deybi",
-      "partidasJugadas": 1,
-      "partidasGanadas": 1,
-      "casillaMasAlta": 100
+      "nombre": "mafe",
+      "partidasJugadas": 2,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 87
     },
     {
       "nombre": "BOT",
       "partidasJugadas": 1,
-      "partidasGanadas": 0,
-      "casillaMasAlta": 91
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
     }
   ]
 }

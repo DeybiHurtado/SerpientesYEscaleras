@@ -1,5 +1,5 @@
 {
-  "fechaGuardado": "2026-11-20 18:17",
+  "fechaGuardado": "2026-11-20 19:05",
   "jugadores": [
     {
       "id": 22,
@@ -28,14 +28,14 @@
     {
       "id": 24,
       "nombre": "BOT 2",
-      "posicion": 13,
+      "posicion": 29,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 13,
+      "casillaMaxima": 29,
       "esConsola": true,
-      "jugadas": 2
+      "jugadas": 4
     },
     {
       "id": 25,
@@ -47,7 +47,7 @@
       "tieneTurnoExtra": false,
       "casillaMaxima": 10,
       "esConsola": true,
-      "jugadas": 1
+      "jugadas": 2
     }
   ],
   "serpientes": [
@@ -98,6 +98,7 @@
       "usada": false
     }
   ],
-  "indiceTurnoActual": 2,
-  "turnos": 7
+  "indiceTurnoActual": 3,
+  "turnos": 10,
+  "turnoExtraPorParEnCurso": false
 }

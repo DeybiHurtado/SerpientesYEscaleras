@@ -335,6 +335,102 @@
       "casillaMaxima": 1,
       "esConsola": false,
       "jugadas": 0
+    },
+    {
+      "id": 30,
+      "nombre": "Jugador 1",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 31,
+      "nombre": "Mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 32,
+      "nombre": "mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 1
+    },
+    {
+      "id": 34,
+      "nombre": "Jugador 1",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 35,
+      "nombre": "Jugador 2",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 36,
+      "nombre": "marinela",
+      "posicion": 95,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 99,
+      "esConsola": false,
+      "jugadas": 10
+    },
+    {
+      "id": 38,
+      "nombre": "marinela",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 42,
+      "nombre": "mafe",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
     }
   ]
 }

@@ -32,7 +32,7 @@ public class PantallaGanador extends Pantalla {
     protected void dibujar(Graphics2D g) {
         this.textoCentrado(g, "GANADOR", 600, 230, 170, Recursos.CREMA, 1000);
         this.textoCentrado(g, "HAS LLEGADO A LA META", 600, 390, 40, Recursos.CREMA, 900);
-        Recursos.dibujarEstirada(g, Recursos.imagen("botones/normal.png"), 344, 440, 512, 110, 16, 16);
+        Recursos.dibujarEstirada(g, Recursos.imagen("botones/resaltado.png"), 344, 440, 512, 110, 16, 16);
         this.textoCentrado(g, this.nombreGanador, 600, 495, 48, Recursos.CREMA, 460);
     }
 }

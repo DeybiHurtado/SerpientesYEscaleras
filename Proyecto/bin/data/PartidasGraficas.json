@@ -90,6 +90,139 @@
         "3. Veneno",
         "4. Normal"
       ]
+    },
+    {
+      "fecha": "2026-11-21 02:27",
+      "jugadores": [
+        {
+          "nombre": "hjnyh",
+          "jugadas": 16,
+          "casillaFinal": 100
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 17,
+          "casillaFinal": 97
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 18,
+          "casillaFinal": 96
+        },
+        {
+          "nombre": "BOT 3",
+          "jugadas": 18,
+          "casillaFinal": 99
+        }
+      ],
+      "escaleras": [
+        "1. Doble turno",
+        "2. Normal",
+        "3. Normal",
+        "4. Normal"
+      ],
+      "serpientes": [
+        "1. Normal",
+        "2. Normal",
+        "3. Normal",
+        "4. Normal"
+      ]
+    },
+    {
+      "fecha": "2026-11-21 12:53",
+      "jugadores": [
+        {
+          "nombre": "Mafe",
+          "jugadas": 12,
+          "casillaFinal": 95
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 13,
+          "casillaFinal": 83
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 12,
+          "casillaFinal": 100
+        }
+      ],
+      "escaleras": [
+        "1. Doble turno",
+        "2. Un solo uso",
+        "3. Doble o nada",
+        "4. Un solo uso"
+      ],
+      "serpientes": [
+        "1. Veneno",
+        "2. Veneno",
+        "3. Veneno",
+        "4. Doble o nada"
+      ]
+    },
+    {
+      "fecha": "2026-11-21 14:01",
+      "jugadores": [
+        {
+          "nombre": "marinela",
+          "jugadas": 10,
+          "casillaFinal": 95
+        },
+        {
+          "nombre": "BOT",
+          "jugadas": 10,
+          "casillaFinal": 100
+        }
+      ],
+      "escaleras": [
+        "1. Normal",
+        "2. Doble turno",
+        "3. Normal",
+        "4. Doble turno"
+      ],
+      "serpientes": [
+        "1. Doble o nada",
+        "2. Doble o nada",
+        "3. Veneno",
+        "4. Veneno"
+      ]
+    },
+    {
+      "fecha": "2026-11-21 14:12",
+      "jugadores": [
+        {
+          "nombre": "mafe",
+          "jugadas": 14,
+          "casillaFinal": 99
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 11,
+          "casillaFinal": 32
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 14,
+          "casillaFinal": 100
+        },
+        {
+          "nombre": "BOT 3",
+          "jugadas": 10,
+          "casillaFinal": 76
+        }
+      ],
+      "escaleras": [
+        "1. Doble turno",
+        "2. Un solo uso",
+        "3. Un solo uso",
+        "4. Doble o nada"
+      ],
+      "serpientes": [
+        "1. Normal",
+        "2. Quita turno",
+        "3. Quita turno",
+        "4. Quita turno"
+      ]
     }
   ]
 }

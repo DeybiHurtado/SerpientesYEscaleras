@@ -53,7 +53,7 @@ public class PantallaDetallePartida extends Pantalla {
     }
 
     private void dibujarOrdenDeLlegada(Graphics2D g) {
-        this.textoIzquierda(g, "PUESTO", 200, 295, 20, Recursos.GRIS_AZUL);
+        this.textoIzquierda(g, "PUESTO", 200, 295, 20, Recursos.CREMA);
         this.textoIzquierda(g, "JUGADOR", 330, 295, 20, Recursos.GRIS_AZUL);
         this.textoIzquierda(g, "CASILLA", 720, 295, 20, Recursos.GRIS_AZUL);
         this.textoIzquierda(g, "JUGADAS", 900, 295, 20, Recursos.GRIS_AZUL);

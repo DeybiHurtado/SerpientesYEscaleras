@@ -14,38 +14,38 @@
     },
     {
       "nombre": "hjnyh",
-      "partidasJugadas": 1,
-      "partidasGanadas": 0,
-      "casillaMasAlta": 59
+      "partidasJugadas": 2,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
     },
     {
       "nombre": "BOT 1",
-      "partidasJugadas": 2,
+      "partidasJugadas": 5,
       "partidasGanadas": 0,
-      "casillaMasAlta": 62
+      "casillaMasAlta": 97
     },
     {
       "nombre": "BOT 2",
-      "partidasJugadas": 2,
-      "partidasGanadas": 0,
-      "casillaMasAlta": 47
+      "partidasJugadas": 5,
+      "partidasGanadas": 2,
+      "casillaMasAlta": 100
     },
     {
       "nombre": "BOT 3",
-      "partidasJugadas": 2,
+      "partidasJugadas": 4,
       "partidasGanadas": 2,
       "casillaMasAlta": 100
     },
     {
       "nombre": "mafe",
-      "partidasJugadas": 2,
+      "partidasJugadas": 4,
       "partidasGanadas": 0,
-      "casillaMasAlta": 87
+      "casillaMasAlta": 99
     },
     {
       "nombre": "BOT",
-      "partidasJugadas": 2,
-      "partidasGanadas": 1,
+      "partidasJugadas": 3,
+      "partidasGanadas": 2,
       "casillaMasAlta": 100
     },
     {
@@ -53,6 +53,12 @@
       "partidasJugadas": 1,
       "partidasGanadas": 1,
       "casillaMasAlta": 100
+    },
+    {
+      "nombre": "marinela",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 95
     }
   ]
 }

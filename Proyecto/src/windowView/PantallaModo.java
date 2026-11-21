@@ -27,9 +27,10 @@ public class PantallaModo extends Pantalla {
     }
 
     public void actualizarDisponibilidad() {
-        this.botonContinuar.setVisible(this.ventana.getControlador().hayPartidaGuardada());
-        this.botonContinuar.setSeleccionado(true);
-        this.botonIndividual.setSeleccionado(false);
+       boolean hayPartida = this.ventana.getControlador().hayPartidaGuardada();
+        this.botonContinuar.setVisible(hayPartida);
+        this.botonContinuar.setSeleccionado(hayPartida);
+        this.botonIndividual.setSeleccionado(!hayPartida);
         
     }
 

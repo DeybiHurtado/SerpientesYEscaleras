@@ -35,6 +35,18 @@
       "partidasJugadas": 1,
       "partidasGanadas": 1,
       "casillaMasAlta": 100
+    },
+    {
+      "nombre": "Deybi",
+      "partidasJugadas": 1,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
+    },
+    {
+      "nombre": "BOT",
+      "partidasJugadas": 1,
+      "partidasGanadas": 0,
+      "casillaMasAlta": 91
     }
   ]
 }

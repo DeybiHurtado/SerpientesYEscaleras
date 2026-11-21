@@ -1,5 +1,6 @@
 package windowView;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,8 @@ public class PantallaTablero extends Pantalla {
     private final CasillaBoton[][] casillas = new CasillaBoton[10][10]; 
     private final PanelJugador[] paneles = new PanelJugador[4];
     private final boolean[] esComputadora = new boolean[4];
+    private final boolean[] escalerasDesvaneciendose = new boolean[POSICION_ESCALERAS.length];
+    private final float[] opacidadEscaleras = new float[POSICION_ESCALERAS.length];
     private final VentanaAviso ventanaAviso = new VentanaAviso();
     private final Semaphore semaforoLanzamiento = new Semaphore(0);
 
@@ -94,6 +97,11 @@ public class PantallaTablero extends Pantalla {
         this.detenerPartida();
         this.cantidadJugadores = datos.getCantidad();
         java.util.ArrayList<Jugador> jugadores = this.ventana.getControlador().getJugadores();
+        java.util.List<Escalera> escaleras = this.ventana.getControlador().getTablero().getEscaleras();
+        for (int i = 0; i < this.opacidadEscaleras.length; i++) {
+            this.escalerasDesvaneciendose[i] = false;
+            this.opacidadEscaleras[i] = i < escaleras.size() && escaleras.get(i).isUsada() ? 0f : 1f;
+        }
 
         for (int i = 0; i < 4; i++) {
             boolean juega = i < this.cantidadJugadores;
@@ -223,6 +231,7 @@ public class PantallaTablero extends Pantalla {
         panel.setNivelVeneno(controlador.getNivelVenenoJugador(indice));
 
         int casillaFinalTurno = controlador.getCasillaFinalTurno();
+        int indiceEscaleraDesvaneciendo = this.iniciarDesvanecimientoEscalera(casillaTrasDados, casillaFinalTurno);
         String mensajeCasilla = controlador.getMensajeCasilla();
         if (mensajeCasilla != null && !mensajeCasilla.isEmpty()) {
             boolean esEscalera = controlador.esEscalera(casillaTrasDados);
@@ -233,6 +242,9 @@ public class PantallaTablero extends Pantalla {
         }
         if (panel.getPosicion() != casillaFinalTurno) {
             this.moverFicha(panel, casillaFinalTurno, 36, 16, 0);
+        }
+        if (indiceEscaleraDesvaneciendo >= 0) {
+            this.desvanecerEscalera(indiceEscaleraDesvaneciendo);
         }
 
         if (controlador.isJuegoTerminado()) {
@@ -291,6 +303,34 @@ public class PantallaTablero extends Pantalla {
         panel.setFicha(destinoX, destinoY);
         panel.setPosicion(casilla); 
         this.iluminarCasilla(casilla);
+        this.repaint();
+    }
+
+    private int iniciarDesvanecimientoEscalera(int base, int destino) {
+        if (destino <= base) {
+            return -1;
+        }
+        java.util.List<Escalera> escaleras = this.ventana.getControlador().getTablero().getEscaleras();
+        for (int i = 0; i < escaleras.size() && i < this.escalerasDesvaneciendose.length; i++) {
+            Escalera escalera = escaleras.get(i);
+            if (escalera.getBase() == base && escalera.getNumeroPoder() == 1 && escalera.isUsada()) {
+                this.escalerasDesvaneciendose[i] = true;
+                this.opacidadEscaleras[i] = 1f;
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void desvanecerEscalera(int indice) throws InterruptedException {
+        int cuadros = 20;
+        for (int cuadro = 1; cuadro <= cuadros; cuadro++) {
+            this.opacidadEscaleras[indice] = 1f - (float) cuadro / cuadros;
+            this.repaint();
+            this.dormir(40);
+        }
+        this.escalerasDesvaneciendose[indice] = false;
+        this.opacidadEscaleras[indice] = 0f;
         this.repaint();
     }
 
@@ -358,11 +398,20 @@ public class PantallaTablero extends Pantalla {
         g.drawImage(Recursos.imagen("tableros/" + this.temaActual + ".png"), Casillas.TABLERO_X, Casillas.TABLERO_Y, null);
         java.util.List<Escalera> escaleras = this.ventana.getControlador().getTablero().getEscaleras();
         for (int i = 0; i < POSICION_ESCALERAS.length; i++) {
-            if (i < escaleras.size() && escaleras.get(i).isUsada()) {
+            if (i >= escaleras.size()
+                    || (escaleras.get(i).isUsada() && !this.escalerasDesvaneciendose[i])) {
                 continue;
             }
             BufferedImage escalera = Recursos.imagen("escaleras/escalera_" + (i + 1) + ".png");
-            g.drawImage(escalera, POSICION_ESCALERAS[i][0], POSICION_ESCALERAS[i][1], null);
+            if (this.escalerasDesvaneciendose[i]) {
+                Graphics2D gEscalera = (Graphics2D) g.create();
+                gEscalera.setComposite(AlphaComposite.getInstance(
+                        AlphaComposite.SRC_OVER, this.opacidadEscaleras[i]));
+                gEscalera.drawImage(escalera, POSICION_ESCALERAS[i][0], POSICION_ESCALERAS[i][1], null);
+                gEscalera.dispose();
+            } else {
+                g.drawImage(escalera, POSICION_ESCALERAS[i][0], POSICION_ESCALERAS[i][1], null);
+            }
         }
         for (int i = 0; i < POSICION_SERPIENTES.length; i++) {
             BufferedImage serpiente = Recursos.imagen("serpientes/serpiente_" + (i + 1) + ".png");

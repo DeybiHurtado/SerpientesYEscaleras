@@ -1,3 +1,31 @@
 {
-  "lista": []
+  "lista": [
+    {
+      "fecha": "2026-11-20 19:03",
+      "jugadores": [
+        {
+          "nombre": "Deybi",
+          "jugadas": 17,
+          "casillaFinal": 100
+        },
+        {
+          "nombre": "BOT",
+          "jugadas": 14,
+          "casillaFinal": 91
+        }
+      ],
+      "escaleras": [
+        "1. Un solo uso",
+        "2. Un solo uso",
+        "3. Un solo uso",
+        "4. Un solo uso"
+      ],
+      "serpientes": [
+        "1. Normal",
+        "2. Veneno",
+        "3. Quita turno",
+        "4. Quita turno"
+      ]
+    }
+  ]
 }

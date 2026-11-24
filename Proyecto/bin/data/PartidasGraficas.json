@@ -223,6 +223,43 @@
         "3. Quita turno",
         "4. Quita turno"
       ]
+    },
+    {
+      "fecha": "2026-11-24 11:27",
+      "jugadores": [
+        {
+          "nombre": "Peter",
+          "jugadas": 18,
+          "casillaFinal": 100
+        },
+        {
+          "nombre": "BOT 1",
+          "jugadas": 15,
+          "casillaFinal": 99
+        },
+        {
+          "nombre": "BOT 2",
+          "jugadas": 16,
+          "casillaFinal": 99
+        },
+        {
+          "nombre": "BOT 3",
+          "jugadas": 16,
+          "casillaFinal": 85
+        }
+      ],
+      "escaleras": [
+        "1. Normal",
+        "2. Un solo uso",
+        "3. Un solo uso",
+        "4. Normal"
+      ],
+      "serpientes": [
+        "1. Veneno",
+        "2. Quita turno",
+        "3. Doble o nada",
+        "4. Quita turno"
+      ]
     }
   ]
 }

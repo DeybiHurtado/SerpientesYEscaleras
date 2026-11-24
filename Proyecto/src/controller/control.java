@@ -120,15 +120,11 @@ public class control {
     }
 private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int numero) {
         while (true) {
-            if (nombre.isEmpty()) {
-                view.mostrarMensaje("El nombre no puede estar vacío.");
-            } else if (nombre.equalsIgnoreCase("Consola")) {
-                view.mostrarMensaje("Ese nombre está reservado para la computadora.");
-            } else if (contieneIgnorandoMayusculas(yaUsados, nombre)) {
-                view.mostrarMensaje("Ese nombre ya está en uso en esta partida.");
-            } else {
-                return nombre;
+            String error = this.validarNombre(nombre, yaUsados);
+            if (error.isEmpty()) {
+                return nombre.trim();
             }
+            view.mostrarMensaje(error);
             nombre = (numero == 0) ? view.pedirNombreUnico() : view.pedirNombreJugador(numero);
         }
     }
@@ -144,34 +140,44 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
     // La parte grafica, las ventanas llamas a estos metodos y el controlador le pide todo al modelo para que la vista no toque el modelo
     // muestra un mensaje de error si el nombre esta mal o esta vacio 
     public String validarNombre(String nombre, ArrayList<String> yaUsados) {
-        if (nombre.isEmpty()) {
+        String nombreNormalizado = nombre == null ? "" : nombre.trim();
+        if (nombreNormalizado.isEmpty()) {
             return "El nombre no puede estar vacío.";
         }
-        if (nombre.toLowerCase().startsWith("consola")) {
+        if (nombreNormalizado.codePointCount(0, nombreNormalizado.length()) > 20) {
+            return "El nombre no puede tener más de 20 caracteres.";
+        }
+        if (nombreNormalizado.regionMatches(true, 0, "consola", 0, "consola".length())
+                || nombreNormalizado.equalsIgnoreCase("BOT")) {
             return "Ese nombre está reservado para la computadora.";
         }
-        if (this.contieneIgnorandoMayusculas(yaUsados, nombre)) {
+        if (!nombreNormalizado.matches("[\\p{L}\\p{M}\\p{N} ]+")) {
+            return "El nombre solo puede contener letras, números y espacios.";
+        }
+        if (yaUsados != null && this.contieneIgnorandoMayusculas(yaUsados, nombreNormalizado)) {
             return "Ese nombre ya está en uso en esta partida.";
         }
         return "";
     }
 
-    public void iniciarPartidaIndividual(String nombre, int cantidadRivales) {
+    public String iniciarPartidaIndividual(String nombre, int cantidadRivales) {
         if (cantidadRivales < 1 || cantidadRivales > 3) {
             throw new IllegalArgumentException("La cantidad de rivales debe estar entre 1 y 3.");
         }
         String nombreJugador = nombre == null ? "" : nombre.trim();
-        if (nombreJugador.isEmpty()) {
-            nombreJugador = "Jugador 1";
+        String error = this.validarNombre(nombreJugador, new ArrayList<>());
+        if (!error.isEmpty()) {
+            return error;
         }
         this.juego.iniciarPartidaContraConsola(nombreJugador, cantidadRivales);
+        return "";
     }
 
     public void iniciarPartidaMultijugador(ArrayList<String> nombres) {
         this.juego.iniciarPartidaMultijugador(nombres);
     }
 
-    public void iniciarPartidaMultijugador(String[] nombres, boolean[] jugadoresActivos) {
+    public String iniciarPartidaMultijugador(String[] nombres, boolean[] jugadoresActivos) {
         if (nombres == null || jugadoresActivos == null || nombres.length != jugadoresActivos.length) {
             throw new IllegalArgumentException("Los nombres y jugadores activos deben tener el mismo tamaño.");
         }
@@ -179,13 +185,18 @@ private String pedirNombreValido(String nombre, ArrayList<String> yaUsados, int 
         for (int i = 0; i < nombres.length; i++) {
             if (jugadoresActivos[i]) {
                 String nombre = nombres[i] == null ? "" : nombres[i].trim();
-                participantes.add(nombre.isEmpty() ? "Jugador " + (i + 1) : nombre);
+                String error = this.validarNombre(nombre, participantes);
+                if (!error.isEmpty()) {
+                    return "Jugador " + (i + 1) + ": " + error;
+                }
+                participantes.add(nombre);
             }
         }
         if (participantes.size() < 2 || participantes.size() > 4) {
             throw new IllegalArgumentException("El modo multijugador requiere de 2 a 4 jugadores.");
         }
         this.juego.iniciarPartidaMultijugador(participantes);
+        return "";
     }
 
     public boolean continuarPartidaGuardada() {

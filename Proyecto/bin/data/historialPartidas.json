@@ -413,6 +413,64 @@
       "ganador": "BOT 2",
       "turnos": 51,
       "contraConsola": true
+    },
+    {
+      "fecha": "2026-11-24 11:27",
+      "participantes": {
+        "ArrayJugadores": [
+          {
+            "id": 52,
+            "nombre": "Peter",
+            "posicion": 100,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 100,
+            "esConsola": false,
+            "jugadas": 18
+          },
+          {
+            "id": 53,
+            "nombre": "BOT 1",
+            "posicion": 99,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 99,
+            "esConsola": true,
+            "jugadas": 15
+          },
+          {
+            "id": 54,
+            "nombre": "BOT 2",
+            "posicion": 99,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 99,
+            "esConsola": true,
+            "jugadas": 16
+          },
+          {
+            "id": 55,
+            "nombre": "BOT 3",
+            "posicion": 85,
+            "puntaje": 0,
+            "pierdeTurno": false,
+            "nivelVeneno": 0,
+            "tieneTurnoExtra": false,
+            "casillaMaxima": 85,
+            "esConsola": true,
+            "jugadas": 16
+          }
+        ]
+      },
+      "ganador": "Peter",
+      "turnos": 65,
+      "contraConsola": true
     }
   ]
 }

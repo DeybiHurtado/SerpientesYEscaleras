@@ -431,6 +431,126 @@
       "casillaMaxima": 1,
       "esConsola": false,
       "jugadas": 0
+    },
+    {
+      "id": 43,
+      "nombre": "mkjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmmk,ll,lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnccccccccccccccccccccccccccccccchhhhhhhhhhhhhhhhhhf123454",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 44,
+      "nombre": "Jugador 1",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 45,
+      "nombre": "Jugador 2",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 46,
+      "nombre": "Jugador 3",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 47,
+      "nombre": "Jugador 1",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 48,
+      "nombre": "Jugador 2",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 49,
+      "nombre": "BOTH",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 50,
+      "nombre": "BOT",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 51,
+      "nombre": "GOKU",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
+    },
+    {
+      "id": 52,
+      "nombre": "Peter",
+      "posicion": 1,
+      "puntaje": 0,
+      "pierdeTurno": false,
+      "nivelVeneno": 0,
+      "tieneTurnoExtra": false,
+      "casillaMaxima": 1,
+      "esConsola": false,
+      "jugadas": 0
     }
   ]
 }

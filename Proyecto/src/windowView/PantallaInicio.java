@@ -11,7 +11,7 @@ public class PantallaInicio extends Pantalla {
         this.ventana = ventana;
 
         BotonImagen botonJugar = this.agregar(this.crearBoton("JUGAR"), 572, 500, 397,104);
-        BotonImagen botonEstadisticas = this.agregar(this.crearBoton("ESTADISTICAS"),572, 613, 397,104);
+        BotonImagen botonEstadisticas = this.agregar(this.crearBoton("ESTADÍSTICAS"),572, 613, 397,104);
         BotonImagen botonAjustes = this.agregar(this.crearBoton("AJUSTES"), 572, 726,397,104);
         BotonImagen botonSalir = this.agregar( new BotonImagen("SALIR", "botones/normal.png", "botones/resaltado.png",16), 1215, 790, 190,70);
         botonSalir.setSeleccionado(false);

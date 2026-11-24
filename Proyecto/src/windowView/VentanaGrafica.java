@@ -113,13 +113,25 @@ public class VentanaGrafica extends JFrame {
     }
 
     public void prepararPartidaIndividual(String nombre, int cantidadRivales) {
-        this.controlador.iniciarPartidaIndividual(nombre, cantidadRivales);
+        String error = this.controlador.iniciarPartidaIndividual(nombre, cantidadRivales);
+        if (!error.isEmpty()) {
+            this.mostrarErrorNombre(error);
+            return;
+        }
         this.mostrarCargaDePartida();
     }
 
     public void prepararPartidaMultijugador(String[] nombres, boolean[] jugadoresActivos) {
-        this.controlador.iniciarPartidaMultijugador(nombres, jugadoresActivos);
+        String error = this.controlador.iniciarPartidaMultijugador(nombres, jugadoresActivos);
+        if (!error.isEmpty()) {
+            this.mostrarErrorNombre(error);
+            return;
+        }
         this.mostrarCargaDePartida();
+    }
+
+    private void mostrarErrorNombre(String error) {
+        this.superposicion.mostrarError(error);
     }
 
     public void continuarPartida() {

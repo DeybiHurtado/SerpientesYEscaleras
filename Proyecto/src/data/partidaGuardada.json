@@ -1,60 +1,60 @@
 {
-  "fechaGuardado": "2026-11-21 14:07",
+  "fechaGuardado": "2026-11-24 11:38",
   "jugadores": [
     {
-      "id": 38,
-      "nombre": "marinela",
-      "posicion": 6,
+      "id": 52,
+      "nombre": "Peter",
+      "posicion": 99,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 6,
+      "casillaMaxima": 99,
       "esConsola": false,
-      "jugadas": 2
+      "jugadas": 19
     },
     {
-      "id": 39,
+      "id": 53,
       "nombre": "BOT 1",
-      "posicion": 8,
+      "posicion": 99,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 8,
+      "casillaMaxima": 99,
       "esConsola": true,
-      "jugadas": 1
+      "jugadas": 15
     },
     {
-      "id": 40,
+      "id": 54,
       "nombre": "BOT 2",
-      "posicion": 11,
+      "posicion": 99,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 11,
+      "casillaMaxima": 99,
       "esConsola": true,
-      "jugadas": 1
+      "jugadas": 16
     },
     {
-      "id": 41,
+      "id": 55,
       "nombre": "BOT 3",
-      "posicion": 1,
+      "posicion": 85,
       "puntaje": 0,
       "pierdeTurno": false,
       "nivelVeneno": 0,
       "tieneTurnoExtra": false,
-      "casillaMaxima": 1,
+      "casillaMaxima": 85,
       "esConsola": true,
-      "jugadas": 0
+      "jugadas": 16
     }
   ],
   "serpientes": [
     {
       "cabeza": 58,
       "cola": 22,
-      "poder": 2
+      "poder": 3
     },
     {
       "cabeza": 94,
@@ -69,36 +69,36 @@
     {
       "cabeza": 52,
       "cola": 32,
-      "poder": 3
+      "poder": 1
     }
   ],
   "escaleras": [
     {
       "base": 44,
       "cima": 83,
-      "poder": 2,
+      "poder": 1,
       "usada": false
     },
     {
       "base": 3,
       "cima": 24,
-      "poder": 2,
+      "poder": 4,
       "usada": false
     },
     {
       "base": 14,
       "cima": 48,
-      "poder": 4,
+      "poder": 1,
       "usada": false
     },
     {
       "base": 72,
       "cima": 89,
-      "poder": 1,
+      "poder": 4,
       "usada": false
     }
   ],
-  "indiceTurnoActual": 2,
-  "turnos": 4,
+  "indiceTurnoActual": 0,
+  "turnos": 66,
   "turnoExtraPorParEnCurso": false
 }

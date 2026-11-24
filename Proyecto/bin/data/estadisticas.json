@@ -20,19 +20,19 @@
     },
     {
       "nombre": "BOT 1",
-      "partidasJugadas": 5,
+      "partidasJugadas": 6,
       "partidasGanadas": 0,
-      "casillaMasAlta": 97
+      "casillaMasAlta": 99
     },
     {
       "nombre": "BOT 2",
-      "partidasJugadas": 5,
+      "partidasJugadas": 6,
       "partidasGanadas": 2,
       "casillaMasAlta": 100
     },
     {
       "nombre": "BOT 3",
-      "partidasJugadas": 4,
+      "partidasJugadas": 5,
       "partidasGanadas": 2,
       "casillaMasAlta": 100
     },
@@ -59,6 +59,12 @@
       "partidasJugadas": 1,
       "partidasGanadas": 0,
       "casillaMasAlta": 95
+    },
+    {
+      "nombre": "Peter",
+      "partidasJugadas": 1,
+      "partidasGanadas": 1,
+      "casillaMasAlta": 100
     }
   ]
 }

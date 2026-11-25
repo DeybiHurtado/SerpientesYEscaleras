@@ -59,8 +59,8 @@ public class Superposicion extends JPanel {
         this.doLayout();
         this.setComponentZOrder(this.ventanaAviso, 0);
         this.ventanaAviso.setVisible(true);
-        this.ventanaAviso.mostrarDosLineas("NOMBRE NO VÁLIDO", 32, new Color(0xE35D4B), mensaje, 24,
-                Recursos.CREMA);
+        this.ventanaAviso.mostrarDosLineas("NOMBRE NO VÁLIDO", 32, new Color(0xFAFAE5), mensaje, 24,
+                Recursos.DORADO);
         if (this.temporizadorAviso != null) {
             this.temporizadorAviso.stop();
         }
